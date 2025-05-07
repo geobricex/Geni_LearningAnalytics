@@ -1,0 +1,17 @@
+{
+    "en": {
+      "demographic_distribution": "Summarize the demographics (age, gender, region) and explain any visible patterns.",
+      "economic_status": "Describe the general economic background of the students and whether it appears to affect academic performance.",
+      "technology_access": "Analyze students' access to technology and its possible impact on engagement or performance.",
+      "correlations_found": "Highlight any strong or interesting correlations (e.g., age vs performance, internet access vs grades).",
+      "suggested_interventions": "Based on the data, suggest targeted interventions or support strategies."
+    },
+    "es": {
+      "demographic_distribution": "Resume la distribución demográfica (edad, género, región) y explica patrones visibles.",
+      "economic_status": "Describe el contexto económico general de los estudiantes y cómo podría influir en el rendimiento académico.",
+      "technology_access": "Analiza el acceso a tecnología y cómo podría impactar el compromiso o rendimiento.",
+      "correlations_found": "Destaca correlaciones interesantes o fuertes (por ejemplo, edad vs desempeño, acceso a internet vs notas).",
+      "suggested_interventions": "Sugiere intervenciones o apoyos basados en los datos analizados."
+    }
+  }
+  

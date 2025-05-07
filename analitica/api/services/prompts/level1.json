@@ -1,0 +1,28 @@
+{
+    "en": {
+      "overall_summary": "Summarize the group's overall academic performance using average, median, mode, standard deviation, variance, and quartiles.",
+      "outstanding_students": "Identify the top-performing students. Highlight what makes them stand out—high grades, consistency, early submissions, etc.",
+      "at_risk_students": "List students at risk of failure based on grades. Justify with clear indicators from the data.",
+      "performance_by_activity_type": "Analyze performance by type of activity (e.g., quiz, forum). Discuss which types yielded higher or lower scores, and examine submission timing and grade dispersion.",
+      "performance_by_specific_activity": "Evaluate specific activities. Identify which were the easiest, hardest, or had the widest score range. Mention possible reasons.",
+      "time_analysis": "Interpret submission time data. Who submitted early? Who submitted close to the deadline? Any correlation with performance?",
+      "recommendations": "Provide clear, actionable academic or pedagogical recommendations based on the insights.",
+      "delivery_time_prediction_analysis": "Interpret the model's prediction of submission timing. Which students are predicted to submit very early or close to the deadline? Discuss implications for academic planning.",
+      "student_clustering_analysis": "Analyze the student clusters. What profiles emerge? Discuss the characteristics of each group and their potential academic support needs.",
+      "performance_prediction_analysis": "Interpret the performance classification model results. Who is predicted as 'at risk' or 'high performer'? What interventions are suggested?"  
+    },
+    "es": {
+      "overall_summary": "Describe el rendimiento general del grupo utilizando promedio, mediana, moda, desviación estándar, varianza y cuartiles.",
+      "outstanding_students": "Identifica los estudiantes con mejor rendimiento. Destaca sus fortalezas: buenas calificaciones, constancia, entregas anticipadas, etc.",
+      "at_risk_students": "Enumera los estudiantes en riesgo de fracaso académico y justifica tu respuesta con indicadores claros del análisis.",
+      "performance_by_activity_type": "Analiza el rendimiento según el tipo de actividad (por ejemplo, quiz, foro). Discute cuáles obtuvieron mejores o peores resultados, y analiza la entrega y dispersión.",
+      "performance_by_specific_activity": "Evalúa actividades individuales. Menciona cuáles fueron las más fáciles, más difíciles o con mayor rango de calificaciones.",
+      "analisis_detime_analysis_tiempos": "Interpreta los datos de tiempo de entrega. ¿Quién entregó antes? ¿Quién cerca del plazo? ¿Hay relación con las notas?",
+      "recommendations": "Proporciona recomendaciones académicas claras y prácticas basadas en los hallazgos.",
+      "delivery_time_prediction_analysis": "Interpreta la predicción del modelo sobre los tiempos de entrega. ¿Qué estudiantes se anticipan a entregar temprano o cerca del plazo? Discute las implicaciones para la planificación académica.",
+      "student_clustering_analysis": "Analiza los grupos de estudiantes. ¿Qué perfiles emergen? Expón las características de cada grupo y las posibles necesidades de apoyo académico.",
+      "performance_prediction_analysis": "Interpreta los resultados del modelo de clasificación de rendimiento. ¿Quiénes se predicen como 'en riesgo' o 'de alto desempeño'? ¿Qué intervenciones se sugieren?"
+  
+    }
+  }
+  
