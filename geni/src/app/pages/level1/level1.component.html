@@ -1,0 +1,364 @@
+<p-tabView>
+
+    <p-tabPanel header="Detail View">
+        <p-card header="Students Summary with Detail View">
+            <p-table [value]="rawData" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="student_name">
+                            Student
+                            <p-sortIcon field="student_name"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="course_name">
+                            Course
+                            <p-sortIcon field="course_name"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="activities.length">
+                            Total Activities
+                            <p-sortIcon field="activities.length"></p-sortIcon>
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+
+
+                <ng-template pTemplate="body" let-student>
+                    <tr>
+                        <td>{{ student.student_name }}</td>
+                        <td>{{ student.course_name }}</td>
+                        <td>{{ student.activities.length }}</td>
+                        <td>
+                            <button pButton type="button" icon="pi pi-eye" label="View" (click)="openDialog(student)"
+                                class="p-button-sm"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+
+        <!-- Diálogo para mostrar actividades -->
+        <p-dialog header="Student Activity Detail" [(visible)]="showDialog" [modal]="true" [style]="{ width: '50vw' }"
+            [closable]="true">
+            <div *ngIf="selectedStudent">
+                <h3 class="mb-3">{{ selectedStudent.student_name }}</h3>
+
+                <p-table [value]="selectedStudent.activities" responsiveLayout="scroll" [rows]="10">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="type">Type</th>
+                            <th pSortableColumn="title">Title</th>
+                            <th pSortableColumn="grade">Grade</th>
+                            <th>Max Grade</th>
+                            <th pSortableColumn="submission_date">Submitted</th>
+                            <th pSortableColumn="submission_final_date">Due Date</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-activity>
+                        <tr>
+                            <td>{{ activity.type }}</td>
+                            <td>{{ activity.title }}</td>
+                            <td>{{ activity.grade }}</td>
+                            <td>{{ activity.max_grade }}</td>
+                            <td>{{ activity.submission_date | date: 'short' }}</td>
+                            <td>{{ activity.submission_final_date | date: 'short' }}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </p-dialog>
+    </p-tabPanel>
+
+    <p-tabPanel header="Excel View">
+
+        <div class="flex flex-col gap-4 items-center">
+            <button pButton type="button" label="Download Level 1 File" icon="pi pi-download" class="p-button-success"
+                (click)="downloadFile()"></button>
+        </div>
+
+        <p-card header="Excel Content (Read from file)">
+            <p-table [value]="excelData" [paginator]="true" [rows]="5" responsiveLayout="scroll"
+                *ngIf="excelData.length > 0">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th *ngFor="let col of getExcelColumns()">
+                            {{ col }}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td *ngFor="let col of getExcelColumns()">
+                            {{ row[col] }}
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
+            <div *ngIf="excelData.length === 0" class="text-center text-gray-500">
+                <p>No Excel file loaded yet.</p>
+                <button pButton type="button" label="Load Excel File" icon="pi pi-file-excel" class="p-button-success"
+                    (click)="loadExcelFile()"></button>
+            </div>
+
+        </p-card>
+    </p-tabPanel>
+
+
+    <p-tabPanel header="Grouped View">
+
+        <p-card header="Level 1 - Academic Records Table">
+            <p class="text-muted mb-4">
+                This table displays academic records by student and activity.
+            </p>
+
+            <p-table [value]="flattenedData" groupRowsBy="student_name" rowGroupMode="subheader" [paginator]="true"
+                [rows]="10" sortMode="multiple" responsiveLayout="scroll" scrollHeight="500px">
+                <!-- Agrupación por estudiante -->
+                <ng-template pTemplate="groupheader" let-rowData>
+                    <tr class="bg-primary text-white">
+                        <td colspan="7" class="py-2 px-3 font-bold text-base">
+                            {{ rowData.student_name }}
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <!-- Cabecera -->
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="type">Type</th>
+                        <th pSortableColumn="title">Activity</th>
+                        <th pSortableColumn="grade">Grade</th>
+                        <th>Max Grade</th>
+                        <th pSortableColumn="submission_date">Submitted</th>
+                        <th pSortableColumn="submission_final_date">Due Date</th>
+                        <th>Observation</th>
+                    </tr>
+                </ng-template>
+
+                <!-- Cuerpo -->
+                <ng-template pTemplate="body" let-rowData>
+                    <tr>
+                        <td>{{ rowData.type }}</td>
+                        <td>{{ rowData.title }}</td>
+                        <td>{{ rowData.grade }}</td>
+                        <td>{{ rowData.max_grade }}</td>
+                        <td>{{ rowData.submission_date | date: 'short' }}</td>
+                        <td>{{ rowData.submission_final_date | date: 'short' }}</td>
+                        <td>{{ rowData.observation }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
+        </p-card>
+
+    </p-tabPanel>
+
+
+</p-tabView>
+
+<p-tabView class="mt-5">
+    <p-tabPanel header="JSON Format">
+        <p-card header="Raw JSON used for analysis">
+            <pre style="font-size: 0.75rem; padding: 1rem; border-radius: 0.5rem; max-height: 300px; overflow: auto;">
+                {{ rawData | json }}
+        </pre>
+        </p-card>
+    </p-tabPanel>
+
+    <p-tabPanel header="XML Format">
+        <p-card header="Raw XML used for analysis">
+            <pre style="font-size: 0.75rem; padding: 1rem; border-radius: 0.5rem; max-height: 300px; overflow: auto;">
+                {{ rawDataXML }}
+            </pre>
+        </p-card>
+    </p-tabPanel>
+
+</p-tabView>
+
+<div class="mt-5 text-left">
+    <button pButton type="button" label="Analyze Level 1" icon="pi pi-send" class="p-button-sm"
+        (click)="analyzeLevel1()"></button>
+</div>
+
+<p-tabView class="mt-5" *ngIf="analysisResult.length > 0">
+    <p-tabPanel header="General Statistics">
+
+        <!-- Cards Rápidas -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+            <!-- KPIs -->
+            <p-card header="Overall Average">
+                <span class="font-bold text-lg">{{ analysisResult[0].global_statistics.overall_average }}</span>
+            </p-card>
+            <p-card header="Median">
+                <span class="font-bold text-lg">{{ analysisResult[0].global_statistics.median }}</span>
+            </p-card>
+            <p-card header="Standard Deviation">
+                <span class="font-bold text-lg">{{ analysisResult[0].global_statistics.standard_deviation }}</span>
+            </p-card>
+            <p-card header="Variance">
+                <span class="font-bold text-lg">{{ analysisResult[0].global_statistics.variance }}</span>
+            </p-card>
+            <p-card header="Mode">
+                <span class="font-bold text-lg">{{ analysisResult[0].global_statistics.mode }}</span>
+            </p-card>
+            <p-card header="Total Students">
+                <span class="font-bold text-lg">{{ analysisResult[0].global_statistics.number_of_students }}</span>
+            </p-card>
+        </div>
+
+        <!-- Gráficos principales -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <p-card header="Grade Distribution" class="custom-card">
+        <ngx-charts-bar-vertical 
+            [results]="gradeDistributionChart" 
+            [xAxis]="true" 
+            [yAxis]="true"
+            [legend]="false" 
+            [showXAxisLabel]="true" 
+            [showYAxisLabel]="true" 
+            xAxisLabel="Score Interval"
+            yAxisLabel="Number of Students"
+            [scheme]="chartColorScheme"
+            [animations]="true">
+        </ngx-charts-bar-vertical>
+    </p-card>
+
+    <p-card header="Activity Type Participation" class="custom-card">
+        <ngx-charts-pie-chart 
+            [results]="activityTypeChart" 
+            [legend]="true" 
+            [labels]="true"
+            [scheme]="chartColorScheme"
+            [legendTitle]="'Activity Types'"
+            [doughnut]="false"
+            [animations]="true">
+        </ngx-charts-pie-chart>
+    </p-card>
+    
+    <p-card header="Word Cloud of Observations">
+        <div class="word-cloud">
+            <span *ngFor="let word of wordCloudData" 
+                [ngStyle]="{ 
+                  'font-size': getFontSize(word.value), 
+                  'color': getRandomColor(),
+                  'text-shadow': '2px 2px 3px rgba(128, 128, 128, 0.5)' 
+                }" 
+                [title]="word.value + ' occurrences'">
+                {{ word.name }}
+            </span>
+        </div>
+    </p-card>
+</div>
+            
+            
+            
+
+
+    </p-tabPanel>
+
+    <p-tabPanel header="Student Averages">
+
+        <!-- Card and Table: Expanded Student Averages -->
+        <p-card header="Detailed Student Performance">
+            <p-table [value]="expandedStudentData" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="student_name">Student</th>
+                        <th pSortableColumn="average">Average Grade</th>
+                        <th pSortableColumn="minimum_grade">Minimum Grade</th>
+                        <th pSortableColumn="maximum_grade">Maximum Grade</th>
+                        <th pSortableColumn="type">Total Activities</th>
+                        <th pSortableColumn="average_remaining_minutes">Average Submission Time (min)</th>
+                        <th pSortableColumn="cluster_profile">Cluster Profile</th>
+                        <th pSortableColumn="predicted_performance">Performance Prediction</th>
+                        <th pSortableColumn="performance_probability">Prediction Probability (%)</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-student>
+                    <tr>
+                        <td>{{ student.student_name }}</td>
+                        <td>{{ student.average }}</td>
+                        <td>{{ student.minimum_grade }}</td>
+                        <td>{{ student.maximum_grade }}</td>
+                        <td>{{ student.total_activities }}</td>
+                        <td>{{ student.average_remaining_minutes }} min</td>
+                        <td>{{ student.cluster_profile }}</td>
+                        <td>{{ student.predicted_performance }}</td>
+                        <td>{{ student.performance_probability }}</td>
+                    </tr>
+                </ng-template>
+
+            </p-table>
+        </p-card>
+
+    </p-tabPanel>
+
+    <p-tabPanel header="AI Insight">
+
+        <!-- Textual Insights -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <p-card header="Overall Summary">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1]?.overall_summary }}
+                </p>
+            </p-card>
+            <p-card header="Recommendations">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1]?.recommendations }}
+                </p>
+            </p-card>
+
+            <p-card header="Top Performing Students">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1]?.outstanding_students }}
+                </p>
+            </p-card>
+
+            <p-card header="Students At Risk">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1]?.at_risk_students }}
+                </p>
+            </p-card>
+
+            <p-card header="Performance by Activity Type">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1]?.performance_by_activity_type }}
+                </p>
+            </p-card>
+
+            <p-card header="Performance by Specific Activity">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1]?.performance_by_specific_activity }}
+                </p>
+            </p-card>
+
+            <p-card header="Time Analysis">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1]?.time_analysis }}
+                </p>
+            </p-card>
+
+            <p-card header="Delivery Time Prediction Analysis">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1]?.delivery_time_prediction_analysis }}
+                </p>
+            </p-card>
+
+            <p-card header="Student Clustering Analysis">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1]?.student_clustering_analysis }}
+                </p>
+            </p-card>
+
+            <p-card header="Performance Prediction Analysis">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1]?.performance_prediction_analysis }}
+                </p>
+            </p-card>
+
+        </div>
+
+    </p-tabPanel>
+</p-tabView>

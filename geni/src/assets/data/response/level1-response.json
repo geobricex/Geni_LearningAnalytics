@@ -1,0 +1,588 @@
+[
+    {
+        "global_statistics": {
+            "number_of_students": 11,
+            "number_of_different_activities": 4,
+            "overall_average": 7.9,
+            "median": 7.45,
+            "mode": 7.0,
+            "standard_deviation": 1.15,
+            "variance": 1.32,
+            "range": 4.2,
+            "quartile_1": 7.0,
+            "quartile_2": 7.45,
+            "quartile_3": 9.0,
+            "maximum_grade": {
+                "student_name": "Jeniffer López Aguiar",
+                "grade": 10.0
+            },
+            "minimum_grade": {
+                "student_name": "José Mestanza Mera",
+                "grade": 5.8
+            },
+            "student_with_most_activities": {
+                "name": "Jeniffer López Aguiar",
+                "total_activities": 4
+            },
+            "student_with_fewest_activities": {
+                "name": "Jeniffer López Aguiar",
+                "total_activities": 4
+            },
+            "perfect_grades_10": 2,
+            "failing_grades_below_7": 5,
+            "distribution_by_intervals": {
+                "<6": 1,
+                "6-6.99": 4,
+                "7-7.99": 18,
+                "8-8.99": 5,
+                "9-10": 16
+            },
+            "distribution_by_activity_type": {
+                "quiz": 11,
+                "forum": 11,
+                "research": 11,
+                "workshop": 11
+            },
+            "total_activity_records": 44,
+            "submission_timing": {
+                "average_remaining_minutes": 4648.07,
+                "late_submission_percentage": 0.0,
+                "late_submissions": 0,
+                "early_submissions": 44,
+                "earliest_submission": {
+                    "student_name": "Jeniffer López Aguiar",
+                    "remaining_minutes": 7200.0
+                },
+                "latest_submission": {
+                    "student_name": "José Mestanza Mera",
+                    "remaining_minutes": 1260.0
+                }
+            }
+        },
+        "average_by_student": [
+            {
+                "student_id": "A202509",
+                "student_name": "Genesis Avilez Alcivar",
+                "total_activities": 4,
+                "average": 7.5,
+                "minimum_grade": 7.0,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4687.5
+            },
+            {
+                "student_id": "A202501",
+                "student_name": "Jeniffer López Aguiar",
+                "total_activities": 4,
+                "average": 9.0,
+                "minimum_grade": 7.0,
+                "maximum_grade": 10.0,
+                "average_remaining_minutes": 4680.0
+            },
+            {
+                "student_id": "A202506",
+                "student_name": "José Mestanza Mera",
+                "total_activities": 4,
+                "average": 7.0,
+                "minimum_grade": 5.8,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4590.0
+            },
+            {
+                "student_id": "A202505",
+                "student_name": "José Toapanta Garces",
+                "total_activities": 4,
+                "average": 7.85,
+                "minimum_grade": 7.0,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4640.0
+            },
+            {
+                "student_id": "A202504",
+                "student_name": "Juan Carlos Caviedes",
+                "total_activities": 4,
+                "average": 7.12,
+                "minimum_grade": 6.0,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4613.75
+            },
+            {
+                "student_id": "A202508",
+                "student_name": "Kevin Loza Yanez",
+                "total_activities": 4,
+                "average": 7.48,
+                "minimum_grade": 6.8,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4632.5
+            },
+            {
+                "student_id": "A202502",
+                "student_name": "Luis Rosado Angueta",
+                "total_activities": 4,
+                "average": 7.62,
+                "minimum_grade": 7.0,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4642.5
+            },
+            {
+                "student_id": "A202503",
+                "student_name": "Nara Boza Arzube",
+                "total_activities": 4,
+                "average": 8.62,
+                "minimum_grade": 7.0,
+                "maximum_grade": 9.5,
+                "average_remaining_minutes": 4672.5
+            },
+            {
+                "student_id": "A202510",
+                "student_name": "Paulina Coello Calle",
+                "total_activities": 4,
+                "average": 7.9,
+                "minimum_grade": 7.0,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4627.5
+            },
+            {
+                "student_id": "A202507",
+                "student_name": "Saul Benitez Rivera",
+                "total_activities": 4,
+                "average": 8.2,
+                "minimum_grade": 7.0,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4672.5
+            },
+            {
+                "student_id": "A202511",
+                "student_name": "Valeria Torres Lindao",
+                "total_activities": 4,
+                "average": 8.55,
+                "minimum_grade": 7.0,
+                "maximum_grade": 9.3,
+                "average_remaining_minutes": 4670.0
+            }
+        ],
+        "average_by_activity_type": [
+            {
+                "activity_type": "forum",
+                "total": 11,
+                "average": 7.93,
+                "minimum": 6.2,
+                "maximum": 10.0,
+                "average_remaining_minutes": 7134.55
+            },
+            {
+                "activity_type": "quiz",
+                "total": 11,
+                "average": 7.65,
+                "minimum": 5.8,
+                "maximum": 10.0,
+                "average_remaining_minutes": 1377.73
+            },
+            {
+                "activity_type": "research",
+                "total": 11,
+                "average": 9.0,
+                "minimum": 9.0,
+                "maximum": 9.0,
+                "average_remaining_minutes": 7200.0
+            },
+            {
+                "activity_type": "workshop",
+                "total": 11,
+                "average": 7.0,
+                "minimum": 7.0,
+                "maximum": 7.0,
+                "average_remaining_minutes": 2880.0
+            }
+        ],
+        "average_by_activity": [
+            {
+                "activity_title": "Foro: Algoritmos vs Heurísticas",
+                "total": 11,
+                "average": 7.93,
+                "minimum": 6.2,
+                "maximum": 10.0,
+                "average_remaining_minutes": 7134.55
+            },
+            {
+                "activity_title": "Investigación: Impacto de la Inteligencia Artificial en la educación",
+                "total": 11,
+                "average": 9.0,
+                "minimum": 9.0,
+                "maximum": 9.0,
+                "average_remaining_minutes": 7200.0
+            },
+            {
+                "activity_title": "Quiz 1: Tipos de Datos",
+                "total": 11,
+                "average": 7.65,
+                "minimum": 5.8,
+                "maximum": 10.0,
+                "average_remaining_minutes": 1377.73
+            },
+            {
+                "activity_title": "Taller práctico: Programación en Python",
+                "total": 11,
+                "average": 7.0,
+                "minimum": 7.0,
+                "maximum": 7.0,
+                "average_remaining_minutes": 2880.0
+            }
+        ],
+        "top_3_students": [
+            {
+                "student_id": "A202501",
+                "student_name": "Jeniffer López Aguiar",
+                "total_activities": 4,
+                "average": 9.0,
+                "minimum_grade": 7.0,
+                "maximum_grade": 10.0,
+                "average_remaining_minutes": 4680.0
+            },
+            {
+                "student_id": "A202503",
+                "student_name": "Nara Boza Arzube",
+                "total_activities": 4,
+                "average": 8.62,
+                "minimum_grade": 7.0,
+                "maximum_grade": 9.5,
+                "average_remaining_minutes": 4672.5
+            },
+            {
+                "student_id": "A202511",
+                "student_name": "Valeria Torres Lindao",
+                "total_activities": 4,
+                "average": 8.55,
+                "minimum_grade": 7.0,
+                "maximum_grade": 9.3,
+                "average_remaining_minutes": 4670.0
+            }
+        ],
+        "students_below_overall_average": [
+            {
+                "student_id": "A202509",
+                "student_name": "Genesis Avilez Alcivar",
+                "total_activities": 4,
+                "average": 7.5,
+                "minimum_grade": 7.0,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4687.5
+            },
+            {
+                "student_id": "A202506",
+                "student_name": "José Mestanza Mera",
+                "total_activities": 4,
+                "average": 7.0,
+                "minimum_grade": 5.8,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4590.0
+            },
+            {
+                "student_id": "A202505",
+                "student_name": "José Toapanta Garces",
+                "total_activities": 4,
+                "average": 7.85,
+                "minimum_grade": 7.0,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4640.0
+            },
+            {
+                "student_id": "A202504",
+                "student_name": "Juan Carlos Caviedes",
+                "total_activities": 4,
+                "average": 7.12,
+                "minimum_grade": 6.0,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4613.75
+            },
+            {
+                "student_id": "A202508",
+                "student_name": "Kevin Loza Yanez",
+                "total_activities": 4,
+                "average": 7.48,
+                "minimum_grade": 6.8,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4632.5
+            },
+            {
+                "student_id": "A202502",
+                "student_name": "Luis Rosado Angueta",
+                "total_activities": 4,
+                "average": 7.62,
+                "minimum_grade": 7.0,
+                "maximum_grade": 9.0,
+                "average_remaining_minutes": 4642.5
+            }
+        ],
+        "activity_with_highest_average": {
+            "activity_title": "Investigación: Impacto de la Inteligencia Artificial en la educación",
+            "total": 11,
+            "average": 9.0,
+            "minimum": 9.0,
+            "maximum": 9.0,
+            "average_remaining_minutes": 7200.0
+        },
+        "activity_with_lowest_average": {
+            "activity_title": "Taller práctico: Programación en Python",
+            "total": 11,
+            "average": 7.0,
+            "minimum": 7.0,
+            "maximum": 7.0,
+            "average_remaining_minutes": 2880.0
+        },
+        "average_by_activity_type_per_student": {
+            "Genesis Avilez Alcivar": {
+                "forum": 7.0,
+                "quiz": 7.0,
+                "research": 9.0,
+                "workshop": 7.0
+            },
+            "Jeniffer López Aguiar": {
+                "forum": 10.0,
+                "quiz": 10.0,
+                "research": 9.0,
+                "workshop": 7.0
+            },
+            "José Mestanza Mera": {
+                "forum": 6.2,
+                "quiz": 5.8,
+                "research": 9.0,
+                "workshop": 7.0
+            },
+            "José Toapanta Garces": {
+                "forum": 7.2,
+                "quiz": 8.2,
+                "research": 9.0,
+                "workshop": 7.0
+            },
+            "Juan Carlos Caviedes": {
+                "forum": 6.5,
+                "quiz": 6.0,
+                "research": 9.0,
+                "workshop": 7.0
+            },
+            "Kevin Loza Yanez": {
+                "forum": 7.1,
+                "quiz": 6.8,
+                "research": 9.0,
+                "workshop": 7.0
+            },
+            "Luis Rosado Angueta": {
+                "forum": 7.5,
+                "quiz": 7.0,
+                "research": 9.0,
+                "workshop": 7.0
+            },
+            "Nara Boza Arzube": {
+                "forum": 9.5,
+                "quiz": 9.0,
+                "research": 9.0,
+                "workshop": 7.0
+            },
+            "Paulina Coello Calle": {
+                "forum": 8.2,
+                "quiz": 7.4,
+                "research": 9.0,
+                "workshop": 7.0
+            },
+            "Saul Benitez Rivera": {
+                "forum": 8.7,
+                "quiz": 8.1,
+                "research": 9.0,
+                "workshop": 7.0
+            },
+            "Valeria Torres Lindao": {
+                "forum": 9.3,
+                "quiz": 8.9,
+                "research": 9.0,
+                "workshop": 7.0
+            }
+        },
+        "average_by_submission_day": {
+            "2025-04-01": 7.65,
+            "2025-04-05": 7.93,
+            "2025-04-10": 9.0,
+            "2025-04-20": 7.0
+        },
+        "variance_by_activity_type": {
+            "forum": 1.66,
+            "quiz": 1.72,
+            "research": 0.0,
+            "workshop": 0.0
+        },
+        "dispersion_by_activity": [
+            {
+                "activity_title": "Quiz 1: Tipos de Datos",
+                "count": 11,
+                "var": 1.72
+            },
+            {
+                "activity_title": "Foro: Algoritmos vs Heurísticas",
+                "count": 11,
+                "var": 1.66
+            },
+            {
+                "activity_title": "Investigación: Impacto de la Inteligencia Artificial en la educación",
+                "count": 11,
+                "var": 0.0
+            },
+            {
+                "activity_title": "Taller práctico: Programación en Python",
+                "count": 11,
+                "var": 0.0
+            }
+        ],
+        "delivery_time_prediction": {
+            "rmse": 120.8,
+            "mae": 64.91,
+            "example_predictions": [
+                {
+                    "student_id": "A202510",
+                    "student_name": "Paulina Coello Calle",
+                    "predicted_remaining_minutes": 7120.2
+                },
+                {
+                    "student_id": "A202507",
+                    "student_name": "Saul Benitez Rivera",
+                    "predicted_remaining_minutes": 1407.5
+                },
+                {
+                    "student_id": "A202507",
+                    "student_name": "Saul Benitez Rivera",
+                    "predicted_remaining_minutes": 7180.55
+                },
+                {
+                    "student_id": "A202510",
+                    "student_name": "Paulina Coello Calle",
+                    "predicted_remaining_minutes": 1349.8
+                },
+                {
+                    "student_id": "A202509",
+                    "student_name": "Genesis Avilez Alcivar",
+                    "predicted_remaining_minutes": 7200.0
+                }
+            ],
+            "student_clustering": {
+                "number_of_clusters": 3,
+                "cluster_profiles": {
+                    "Medium performance with on-time submissions (Cluster 0)": {
+                        "total_students": 6,
+                        "students": [
+                            "Luis Rosado Angueta",
+                            "José Toapanta Garces",
+                            "Saul Benitez Rivera",
+                            "Kevin Loza Yanez",
+                            "Genesis Avilez Alcivar",
+                            "Paulina Coello Calle"
+                        ]
+                    },
+                    "Medium performance with on-time submissions (Cluster 1)": {
+                        "total_students": 2,
+                        "students": [
+                            "Juan Carlos Caviedes",
+                            "José Mestanza Mera"
+                        ]
+                    },
+                    "High performance and early submissions (Cluster 2)": {
+                        "total_students": 3,
+                        "students": [
+                            "Jeniffer López Aguiar",
+                            "Nara Boza Arzube",
+                            "Valeria Torres Lindao"
+                        ]
+                    }
+                }
+            },
+            "performance_prediction": {
+                "accuracy": 1.0,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1_score": 1.0,
+                "students_predictions": [
+                    {
+                        "student_id": "A202501",
+                        "student_name": "Jeniffer López Aguiar",
+                        "predicted_label": "High Performer",
+                        "probability": 99.0
+                    },
+                    {
+                        "student_id": "A202502",
+                        "student_name": "Luis Rosado Angueta",
+                        "predicted_label": "At Risk",
+                        "probability": 100.0
+                    },
+                    {
+                        "student_id": "A202503",
+                        "student_name": "Nara Boza Arzube",
+                        "predicted_label": "High Performer",
+                        "probability": 99.0
+                    },
+                    {
+                        "student_id": "A202504",
+                        "student_name": "Juan Carlos Caviedes",
+                        "predicted_label": "At Risk",
+                        "probability": 97.0
+                    },
+                    {
+                        "student_id": "A202505",
+                        "student_name": "José Toapanta Garces",
+                        "predicted_label": "At Risk",
+                        "probability": 100.0
+                    },
+                    {
+                        "student_id": "A202506",
+                        "student_name": "José Mestanza Mera",
+                        "predicted_label": "At Risk",
+                        "probability": 97.0
+                    },
+                    {
+                        "student_id": "A202507",
+                        "student_name": "Saul Benitez Rivera",
+                        "predicted_label": "High Performer",
+                        "probability": 83.0
+                    },
+                    {
+                        "student_id": "A202508",
+                        "student_name": "Kevin Loza Yanez",
+                        "predicted_label": "At Risk",
+                        "probability": 100.0
+                    },
+                    {
+                        "student_id": "A202509",
+                        "student_name": "Genesis Avilez Alcivar",
+                        "predicted_label": "At Risk",
+                        "probability": 86.0
+                    },
+                    {
+                        "student_id": "A202510",
+                        "student_name": "Paulina Coello Calle",
+                        "predicted_label": "At Risk",
+                        "probability": 96.0
+                    },
+                    {
+                        "student_id": "A202511",
+                        "student_name": "Valeria Torres Lindao",
+                        "predicted_label": "High Performer",
+                        "probability": 94.0
+                    }
+                ],
+                "summary": {
+                    "total_students_predicted": 11,
+                    "total_high_performers": 4,
+                    "total_at_risk": 7
+                }
+            }
+        }
+    },
+    {
+        "overall_summary": "The group's overall academic performance is moderately strong, with an average grade of 7.9, closely aligned with the median of 7.45. The most common grade is 7.0, indicating a relatively consistent performance level. The standard deviation of 1.15 and variance of 1.32 suggest some variability in student performance, but the scores are not widely spread out. The range of grades from 5.8 to 10.0 shows a significant gap between the highest and lowest performers. The quartile analysis reveals that 25% of the students scored below 7.0, a common benchmark for passing, while 75% scored below 9.0, indicating room for improvement for many students to reach top-tier performance.",
+        "outstanding_students": "Jeniffer López Aguiar stands out as a top-performing student, achieving the highest average of 9.0 with consistent performance across all activities. She not only scored the maximum grade of 10.0 in some activities but also has no variation in her submission timing, always completing work early. Nara Boza Arzube and Valeria Torres Lindao also demonstrate strong performances, with averages of 8.62 and 8.55 respectively, showcasing consistency and proficiency across tasks, further indicated by high maximum scores and early submissions.",
+        "at_risk_students": "Students such as José Mestanza Mera, Juan Carlos Caviedes, and Genesis Avilez Alcivar are at risk due to lower average grades hovering around or below the 7.0 mark, which is critical since it falls under or just above the passing threshold. Although none submitted late, their grades vary significantly with low minimum scores, suggesting inconsistency in performance. This pattern underscores a need for targeted interventions to prevent potential failure.",
+        "performance_by_activity_type": "Performance varies notably by activity type, with research activities yielding the highest average score of 9.0, followed by forum activities at 7.93. Quizzes fall slightly lower at an average of 7.65, and workshops registered the lowest at 7.0 across all participants, suggesting differing difficulty levels or student engagement. Notably, quizzes showed the highest grade variability, evidenced by a variance of 1.72, indicating diverse student understanding or preparation.",
+        "performance_by_specific_activity": "The research activity titled 'Impacto de la Inteligencia Artificial en la educación' was the easiest, with a perfect average score of 9.0 and no grade variability, reflecting uniform student comprehension. In contrast, 'Quiz 1: Tipos de Datos' was more challenging, with the widest score range and highest variance, suggesting varying levels of understanding or preparedness among students. The 'Taller práctico: Programación en Python' had uniform scores, though its lower average suggests consistent difficulty.",
+        "time_analysis": "All submissions were made early, with no late submissions recorded, suggesting students managed their time well relative to deadlines. Jeniffer López Aguiar submitted both earliest and consistently, indicating strong time management skills correlating with her academic success. In contrast, José Mestanza Mera, who submitted closest to the deadline, exhibits lower academic performance, hinting at potential time management issues impacting grades.",
+        "recommendations": "To address performance disparities, targeted remedial sessions focused on quizzes and practical workshops could be beneficial, given the lower average scores and higher variability in these areas. Encouraging consistent submission schedules could support at-risk students, as early submissions seem to correlate with higher performance. Implementing peer tutoring, particularly leveraging high performers like Jeniffer López Aguiar, could promote collaborative learning and improve overall student achievement.",
+        "delivery_time_prediction_analysis": "The model predicts varied submission times, with students like Paulina Coello Calle and Saul Benitez Rivera likely to either submit very early or closer to deadline. This variability implies that these students have flexible time management approaches, which can be leveraged by providing them deadline-enabling resources or strategies to better pace their work to optimize performance.",
+        "student_clustering_analysis": "Three distinct student clusters emerged: high performers with early submissions, and two medium-performing clusters differentiated by submission timing. High performers like Jeniffer López Aguiar require opportunities for further challenges, while medium performers may benefit from support in improving early preparation skills. Targeted academic support such as workshops focusing on weaker areas for medium-performing students could enhance the overall class proficiency.",
+        "performance_prediction_analysis": "The performance classification model accurately identifies four students as high performers, including Jeniffer López Aguiar, while predicting seven students as at risk. This suggests the need for tailored interventions, particularly for those identified as at risk due to indicators such as fluctuating grades and proximity to failing thresholds. Interventions could include academic counseling, and structured study plans, aimed at ensuring these students achieve passing standards and maintain consistent performance."
+    }
+]

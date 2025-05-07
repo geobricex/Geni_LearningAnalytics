@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<students>
+    <student>
+        <student_id>A202501</student_id>
+        <student_name>Jeniffer López Aguiar</student_name>
+        <course_id>INF101</course_id>
+        <course_name>Fundamentos de Programación</course_name>
+        <activities>
+            <activity_id>ACT01</activity_id>
+            <type>quiz</type>
+            <title>Quiz 1: Tipos de Datos</title>
+            <grade>9.5</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-01T14:00:00Z</submission_date>
+            <submission_final_date>2025-04-02T14:00:00Z</submission_final_date>
+            <observation>Dominio claro del tema</observation>
+        </activities>
+        <activities>
+            <activity_id>ACT02</activity_id>
+            <type>forum</type>
+            <title>Foro: Algoritmos vs Heurísticas</title>
+            <grade>8</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-05T18:00:00Z</submission_date>
+            <submission_final_date>2025-04-10T18:00:00Z</submission_final_date>
+            <observation>Participación adecuada</observation>
+        </activities>
+    </student>
+    <student>
+        <student_id>A202502</student_id>
+        <student_name>Luis Rosado Angueta</student_name>
+        <course_id>INF101</course_id>
+        <course_name>Fundamentos de Programación</course_name>
+        <activities>
+            <activity_id>ACT01</activity_id>
+            <type>quiz</type>
+            <title>Quiz 1: Tipos de Datos</title>
+            <grade>7</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-01T15:30:00Z</submission_date>
+            <submission_final_date>2025-04-02T14:00:00Z</submission_final_date>
+            <observation>Necesita reforzar conceptos básicos</observation>
+        </activities>
+        <activities>
+            <activity_id>ACT02</activity_id>
+            <type>forum</type>
+            <title>Foro: Algoritmos vs Heurísticas</title>
+            <grade>7.5</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-05T19:00:00Z</submission_date>
+            <submission_final_date>2025-04-10T18:00:00Z</submission_final_date>
+            <observation>Participación mínima</observation>
+        </activities>
+    </student>
+    <student>
+        <student_id>A202503</student_id>
+        <student_name>Nara Boza Arzube</student_name>
+        <course_id>INF101</course_id>
+        <course_name>Fundamentos de Programación</course_name>
+        <activities>
+            <activity_id>ACT01</activity_id>
+            <type>quiz</type>
+            <title>Quiz 1: Tipos de Datos</title>
+            <grade>10</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-01T13:45:00Z</submission_date>
+            <submission_final_date>2025-04-02T14:00:00Z</submission_final_date>
+            <observation>Excelente desempeño</observation>
+        </activities>
+        <activities>
+            <activity_id>ACT02</activity_id>
+            <type>forum</type>
+            <title>Foro: Algoritmos vs Heurísticas</title>
+            <grade>9.5</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-05T18:45:00Z</submission_date>
+            <submission_final_date>2025-04-10T18:00:00Z</submission_final_date>
+            <observation>Argumentos sólidos y reflexivos</observation>
+        </activities>
+    </student>
+    <student>
+        <student_id>A202504</student_id>
+        <student_name>Juan Carlos Caviedes</student_name>
+        <course_id>INF101</course_id>
+        <course_name>Fundamentos de Programación</course_name>
+        <activities>
+            <activity_id>ACT01</activity_id>
+            <type>quiz</type>
+            <title>Quiz 1: Tipos de Datos</title>
+            <grade>6</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-01T16:10:00Z</submission_date>
+            <submission_final_date>2025-04-02T14:00:00Z</submission_final_date>
+            <observation>Bajo rendimiento, revisar contenidos</observation>
+        </activities>
+        <activities>
+            <activity_id>ACT02</activity_id>
+            <type>forum</type>
+            <title>Foro: Algoritmos vs Heurísticas</title>
+            <grade>6.5</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-05T20:15:00Z</submission_date>
+            <submission_final_date>2025-04-10T18:00:00Z</submission_final_date>
+            <observation>Poca profundidad en la participación</observation>
+        </activities>
+    </student>
+    <student>
+        <student_id>A202505</student_id>
+        <student_name>José Toapanta Garces</student_name>
+        <course_id>INF101</course_id>
+        <course_name>Fundamentos de Programación</course_name>
+        <activities>
+            <activity_id>ACT01</activity_id>
+            <type>quiz</type>
+            <title>Quiz 1: Tipos de Datos</title>
+            <grade>8.2</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-01T15:10:00Z</submission_date>
+            <submission_final_date>2025-04-02T14:00:00Z</submission_final_date>
+            <observation>Buen dominio general, pero con errores menores</observation>
+        </activities>
+        <activities>
+            <activity_id>ACT02</activity_id>
+            <type>forum</type>
+            <title>Foro: Algoritmos vs Heurísticas</title>
+            <grade>7.8</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-05T19:30:00Z</submission_date>
+            <submission_final_date>2025-04-10T18:00:00Z</submission_final_date>
+            <observation>Participación activa aunque algo dispersa</observation>
+        </activities>
+    </student>
+    <student>
+        <student_id>A202506</student_id>
+        <student_name>José Mestanza Mera</student_name>
+        <course_id>INF101</course_id>
+        <course_name>Fundamentos de Programación</course_name>
+        <activities>
+            <activity_id>ACT01</activity_id>
+            <type>quiz</type>
+            <title>Quiz 1: Tipos de Datos</title>
+            <grade>5.8</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-01T17:00:00Z</submission_date>
+            <submission_final_date>2025-04-02T14:00:00Z</submission_final_date>
+            <observation>Respuestas incompletas, se recomienda repasar</observation>
+        </activities>
+        <activities>
+            <activity_id>ACT02</activity_id>
+            <type>forum</type>
+            <title>Foro: Algoritmos vs Heurísticas</title>
+            <grade>6.2</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-05T21:00:00Z</submission_date>
+            <submission_final_date>2025-04-10T18:00:00Z</submission_final_date>
+            <observation>Participación muy limitada</observation>
+        </activities>
+    </student>
+    <student>
+        <student_id>A202507</student_id>
+        <student_name>Saul Benitez Rivera</student_name>
+        <course_id>INF101</course_id>
+        <course_name>Fundamentos de Programación</course_name>
+        <activities>
+            <activity_id>ACT01</activity_id>
+            <type>quiz</type>
+            <title>Quiz 1: Tipos de Datos</title>
+            <grade>9.1</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-01T14:20:00Z</submission_date>
+            <submission_final_date>2025-04-02T14:00:00Z</submission_final_date>
+            <observation>Resolución clara y completa</observation>
+        </activities>
+        <activities>
+            <activity_id>ACT02</activity_id>
+            <type>forum</type>
+            <title>Foro: Algoritmos vs Heurísticas</title>
+            <grade>8.7</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-05T18:10:00Z</submission_date>
+            <submission_final_date>2025-04-10T18:00:00Z</submission_final_date>
+            <observation>Comentarios bien estructurados</observation>
+        </activities>
+    </student>
+    <student>
+        <student_id>A202508</student_id>
+        <student_name>Kevin Loza Yanez</student_name>
+        <course_id>INF101</course_id>
+        <course_name>Fundamentos de Programación</course_name>
+        <activities>
+            <activity_id>ACT01</activity_id>
+            <type>quiz</type>
+            <title>Quiz 1: Tipos de Datos</title>
+            <grade>6.8</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-01T16:00:00Z</submission_date>
+            <submission_final_date>2025-04-02T14:00:00Z</submission_final_date>
+            <observation>Regular comprensión, mejorar análisis de casos</observation>
+        </activities>
+        <activities>
+            <activity_id>ACT02</activity_id>
+            <type>forum</type>
+            <title>Foro: Algoritmos vs Heurísticas</title>
+            <grade>7.1</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-05T19:10:00Z</submission_date>
+            <submission_final_date>2025-04-10T18:00:00Z</submission_final_date>
+            <observation>Respuestas correctas, pero poco desarrolladas</observation>
+        </activities>
+    </student>
+    <student>
+        <student_id>A202509</student_id>
+        <student_name>Genesis Avilez Alcivar</student_name>
+        <course_id>INF101</course_id>
+        <course_name>Fundamentos de Programación</course_name>
+        <activities>
+            <activity_id>ACT01</activity_id>
+            <type>quiz</type>
+            <title>Quiz 1: Tipos de Datos</title>
+            <grade>10</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-01T13:30:00Z</submission_date>
+            <submission_final_date>2025-04-02T14:00:00Z</submission_final_date>
+            <observation>Dominio excelente del tema</observation>
+        </activities>
+        <activities>
+            <activity_id>ACT02</activity_id>
+            <type>forum</type>
+            <title>Foro: Algoritmos vs Heurísticas</title>
+            <grade>9.8</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-05T18:00:00Z</submission_date>
+            <submission_final_date>2025-04-10T18:00:00Z</submission_final_date>
+            <observation>Aportes reflexivos y con referencias</observation>
+        </activities>
+    </student>
+    <student>
+        <student_id>A202510</student_id>
+        <student_name>Paulina Coello Calle</student_name>
+        <course_id>INF101</course_id>
+        <course_name>Fundamentos de Programación</course_name>
+        <activities>
+            <activity_id>ACT01</activity_id>
+            <type>quiz</type>
+            <title>Quiz 1: Tipos de Datos</title>
+            <grade>7.4</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-01T15:50:00Z</submission_date>
+            <submission_final_date>2025-04-02T14:00:00Z</submission_final_date>
+            <observation>Buen desempeño general, revisar conceptos de listas</observation>
+        </activities>
+        <activities>
+            <activity_id>ACT02</activity_id>
+            <type>forum</type>
+            <title>Foro: Algoritmos vs Heurísticas</title>
+            <grade>8.2</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-05T19:40:00Z</submission_date>
+            <submission_final_date>2025-04-10T18:00:00Z</submission_final_date>
+            <observation>Participación argumentada con ejemplos</observation>
+        </activities>
+    </student>
+    <student>
+        <student_id>A202511</student_id>
+        <student_name>Valeria Torres Lindao</student_name>
+        <course_id>INF101</course_id>
+        <course_name>Fundamentos de Programación</course_name>
+        <activities>
+            <activity_id>ACT01</activity_id>
+            <type>quiz</type>
+            <title>Quiz 1: Tipos de Datos</title>
+            <grade>8.9</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-01T14:10:00Z</submission_date>
+            <submission_final_date>2025-04-02T14:00:00Z</submission_final_date>
+            <observation>Muy buen manejo del tema, lenguaje técnico adecuado</observation>
+        </activities>
+        <activities>
+            <activity_id>ACT02</activity_id>
+            <type>forum</type>
+            <title>Foro: Algoritmos vs Heurísticas</title>
+            <grade>9.3</grade>
+            <max_grade>10</max_grade>
+            <submission_date>2025-04-05T18:30:00Z</submission_date>
+            <submission_final_date>2025-04-10T18:00:00Z</submission_final_date>
+            <observation>Participación destacada, integrando bibliografía</observation>
+        </activities>
+    </student>
+</students>
