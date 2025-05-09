@@ -361,4 +361,15 @@
         </div>
 
     </p-tabPanel>
+
+    <p-tabPanel header="JSON Response">
+   
+        <p-card header="JSON obtained from the analysis performed">
+            <pre style="font-size: 1rem; padding: 1rem; border-radius: 0.5rem; max-height: 300px; overflow: auto;">
+                {{ analysisResult | json }}
+        </pre>
+        </p-card>
+
+    </p-tabPanel>
+
 </p-tabView>

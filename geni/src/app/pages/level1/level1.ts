@@ -31,6 +31,7 @@ export class Level1 implements OnInit {
   selectedStudent: any = null;
   rawData: any[] = [];
   rawDataXML: string = '';  
+  analysisResult: any[] = [];
   flattenedData: any[] = [];
   excelData: any[] = [];
   wordCloudData: WordData[] = [];
@@ -100,8 +101,6 @@ export class Level1 implements OnInit {
     this.selectedStudent = student;
     this.showDialog = true;
   }
-
-  analysisResult: any[] = [];
 
   analyzeLevel1() {
     setTimeout(() => {

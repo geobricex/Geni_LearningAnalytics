@@ -1,0 +1,353 @@
+[
+    {
+        "by_student": [
+            {
+                "student_id": "A202501",
+                "student_name": "Jeniffer López Aguiar",
+                "average_grade_last_3_activities": 8.7,
+                "grade_trend": "mejora",
+                "missed_activities": 1,
+                "avg_time_per_connection": 53.3,
+                "last_access_date": "2025-04-10 22:00:00+00:00",
+                "days_since_last_access": 2,
+                "engagement_change": "aumentó",
+                "participation_slope": 15.4,
+                "accesses_last_7_days": 6,
+                "total_connection_time_minutes": 320,
+                "risk_label": 0,
+                "engagement_cluster": 2
+            },
+            {
+                "student_id": "A202502",
+                "student_name": "Luis Rosado Angueta",
+                "average_grade_last_3_activities": 6.9,
+                "grade_trend": "estable",
+                "missed_activities": 2,
+                "avg_time_per_connection": 45.0,
+                "last_access_date": "2025-04-08 19:40:00+00:00",
+                "days_since_last_access": 4,
+                "engagement_change": "disminuyó",
+                "participation_slope": -12.5,
+                "accesses_last_7_days": 3,
+                "total_connection_time_minutes": 180,
+                "risk_label": 1,
+                "engagement_cluster": 0
+            },
+            {
+                "student_id": "A202503",
+                "student_name": "Nara Boza Arzube",
+                "average_grade_last_3_activities": 9.7,
+                "grade_trend": "estable",
+                "missed_activities": 0,
+                "avg_time_per_connection": 58.6,
+                "last_access_date": "2025-04-10 20:45:00+00:00",
+                "days_since_last_access": 2,
+                "engagement_change": "se mantiene",
+                "participation_slope": 4.0,
+                "accesses_last_7_days": 7,
+                "total_connection_time_minutes": 410,
+                "risk_label": 0,
+                "engagement_cluster": 1
+            },
+            {
+                "student_id": "A202504",
+                "student_name": "Juan Carlos Caviedes",
+                "average_grade_last_3_activities": 5.8,
+                "grade_trend": "descenso",
+                "missed_activities": 3,
+                "avg_time_per_connection": 31.7,
+                "last_access_date": "2025-04-06 18:00:00+00:00",
+                "days_since_last_access": 6,
+                "engagement_change": "disminuyó",
+                "participation_slope": -20.0,
+                "accesses_last_7_days": 2,
+                "total_connection_time_minutes": 95,
+                "risk_label": 1,
+                "engagement_cluster": 0
+            }
+        ],
+        "performance_statistics": {
+            "overall_average": 7.78,
+            "mode": 5.8,
+            "maximum": 9.7,
+            "minimum": 5.8,
+            "standard_deviation": 1.75,
+            "quartile_1": 6.62,
+            "quartile_2": 7.8,
+            "quartile_3": 8.95,
+            "grade_trends": {
+                "estable": 2,
+                "mejora": 1,
+                "descenso": 1
+            },
+            "engagement_changes": {
+                "disminuyó": 2,
+                "aumentó": 1,
+                "se mantiene": 1
+            },
+            "average_time_per_connection": 47.15,
+            "average_participation_slope": -3.28
+        },
+        "average_by_activity_type": {
+            "forum": 7.88,
+            "quiz": 8.12,
+            "tarea": 7.48
+        },
+        "top_3_students": [
+            {
+                "student_id": "A202503",
+                "student_name": "Nara Boza Arzube",
+                "average_grade_last_3_activities": 9.7,
+                "grade_trend": "estable",
+                "missed_activities": 0,
+                "avg_time_per_connection": 58.6,
+                "last_access_date": "2025-04-10T20:45:00+00:00",
+                "days_since_last_access": 2,
+                "engagement_change": "se mantiene",
+                "participation_slope": 4.0,
+                "accesses_last_7_days": 7,
+                "total_connection_time_minutes": 410
+            },
+            {
+                "student_id": "A202501",
+                "student_name": "Jeniffer López Aguiar",
+                "average_grade_last_3_activities": 8.7,
+                "grade_trend": "mejora",
+                "missed_activities": 1,
+                "avg_time_per_connection": 53.3,
+                "last_access_date": "2025-04-10T22:00:00+00:00",
+                "days_since_last_access": 2,
+                "engagement_change": "aumentó",
+                "participation_slope": 15.4,
+                "accesses_last_7_days": 6,
+                "total_connection_time_minutes": 320
+            },
+            {
+                "student_id": "A202502",
+                "student_name": "Luis Rosado Angueta",
+                "average_grade_last_3_activities": 6.9,
+                "grade_trend": "estable",
+                "missed_activities": 2,
+                "avg_time_per_connection": 45.0,
+                "last_access_date": "2025-04-08T19:40:00+00:00",
+                "days_since_last_access": 4,
+                "engagement_change": "disminuyó",
+                "participation_slope": -12.5,
+                "accesses_last_7_days": 3,
+                "total_connection_time_minutes": 180
+            }
+        ],
+        "students_below_average": [
+            {
+                "student_id": "A202502",
+                "student_name": "Luis Rosado Angueta",
+                "average_grade_last_3_activities": 6.9,
+                "grade_trend": "estable",
+                "missed_activities": 2,
+                "avg_time_per_connection": 45.0,
+                "last_access_date": "2025-04-08T19:40:00+00:00",
+                "days_since_last_access": 4,
+                "engagement_change": "disminuyó",
+                "participation_slope": -12.5,
+                "accesses_last_7_days": 3,
+                "total_connection_time_minutes": 180
+            },
+            {
+                "student_id": "A202504",
+                "student_name": "Juan Carlos Caviedes",
+                "average_grade_last_3_activities": 5.8,
+                "grade_trend": "descenso",
+                "missed_activities": 3,
+                "avg_time_per_connection": 31.7,
+                "last_access_date": "2025-04-06T18:00:00+00:00",
+                "days_since_last_access": 6,
+                "engagement_change": "disminuyó",
+                "participation_slope": -20.0,
+                "accesses_last_7_days": 2,
+                "total_connection_time_minutes": 95
+            }
+        ],
+        "highest_participation": [
+            {
+                "student_id": "A202501",
+                "student_name": "Jeniffer López Aguiar",
+                "average_grade_last_3_activities": 8.7,
+                "grade_trend": "mejora",
+                "missed_activities": 1,
+                "avg_time_per_connection": 53.3,
+                "last_access_date": "2025-04-10T22:00:00+00:00",
+                "days_since_last_access": 2,
+                "engagement_change": "aumentó",
+                "participation_slope": 15.4,
+                "accesses_last_7_days": 6,
+                "total_connection_time_minutes": 320
+            },
+            {
+                "student_id": "A202503",
+                "student_name": "Nara Boza Arzube",
+                "average_grade_last_3_activities": 9.7,
+                "grade_trend": "estable",
+                "missed_activities": 0,
+                "avg_time_per_connection": 58.6,
+                "last_access_date": "2025-04-10T20:45:00+00:00",
+                "days_since_last_access": 2,
+                "engagement_change": "se mantiene",
+                "participation_slope": 4.0,
+                "accesses_last_7_days": 7,
+                "total_connection_time_minutes": 410
+            },
+            {
+                "student_id": "A202502",
+                "student_name": "Luis Rosado Angueta",
+                "average_grade_last_3_activities": 6.9,
+                "grade_trend": "estable",
+                "missed_activities": 2,
+                "avg_time_per_connection": 45.0,
+                "last_access_date": "2025-04-08T19:40:00+00:00",
+                "days_since_last_access": 4,
+                "engagement_change": "disminuyó",
+                "participation_slope": -12.5,
+                "accesses_last_7_days": 3,
+                "total_connection_time_minutes": 180
+            }
+        ],
+        "lowest_participation": [
+            {
+                "student_id": "A202504",
+                "student_name": "Juan Carlos Caviedes",
+                "average_grade_last_3_activities": 5.8,
+                "grade_trend": "descenso",
+                "missed_activities": 3,
+                "avg_time_per_connection": 31.7,
+                "last_access_date": "2025-04-06T18:00:00+00:00",
+                "days_since_last_access": 6,
+                "engagement_change": "disminuyó",
+                "participation_slope": -20.0,
+                "accesses_last_7_days": 2,
+                "total_connection_time_minutes": 95
+            },
+            {
+                "student_id": "A202502",
+                "student_name": "Luis Rosado Angueta",
+                "average_grade_last_3_activities": 6.9,
+                "grade_trend": "estable",
+                "missed_activities": 2,
+                "avg_time_per_connection": 45.0,
+                "last_access_date": "2025-04-08T19:40:00+00:00",
+                "days_since_last_access": 4,
+                "engagement_change": "disminuyó",
+                "participation_slope": -12.5,
+                "accesses_last_7_days": 3,
+                "total_connection_time_minutes": 180
+            },
+            {
+                "student_id": "A202503",
+                "student_name": "Nara Boza Arzube",
+                "average_grade_last_3_activities": 9.7,
+                "grade_trend": "estable",
+                "missed_activities": 0,
+                "avg_time_per_connection": 58.6,
+                "last_access_date": "2025-04-10T20:45:00+00:00",
+                "days_since_last_access": 2,
+                "engagement_change": "se mantiene",
+                "participation_slope": 4.0,
+                "accesses_last_7_days": 7,
+                "total_connection_time_minutes": 410
+            }
+        ],
+        "students_at_risk": [
+            {
+                "student_id": "A202502",
+                "student_name": "Luis Rosado Angueta",
+                "average_grade_last_3_activities": 6.9,
+                "accesses_last_7_days": 3,
+                "days_since_last_access": 4,
+                "missed_activities": 2,
+                "participation_slope": -12.5,
+                "last_access_date": "2025-04-08 19:40:00+00:00"
+            },
+            {
+                "student_id": "A202504",
+                "student_name": "Juan Carlos Caviedes",
+                "average_grade_last_3_activities": 5.8,
+                "accesses_last_7_days": 2,
+                "days_since_last_access": 6,
+                "missed_activities": 3,
+                "participation_slope": -20.0,
+                "last_access_date": "2025-04-06 18:00:00+00:00"
+            }
+        ],
+        "prediction_results": {
+            "rmse": 1.02,
+            "predictions": [
+                {
+                    "student_id": "A202502",
+                    "student_name": "Luis Rosado Angueta",
+                    "predicted_grade": 7.92
+                }
+            ]
+        },
+        "risk_results": {
+            "accuracy": 0.0,
+            "students_predictions": [
+                {
+                    "student_id": "A202502",
+                    "student_name": "Luis Rosado Angueta",
+                    "predicted_risk": "Safe"
+                }
+            ]
+        },
+        "clusters": {
+            "Cluster 0": {
+                "total_students": 2,
+                "average_grade": 6.35,
+                "average_time_per_connection": 38.35,
+                "students": [
+                    {
+                        "student_id": "A202502",
+                        "student_name": "Luis Rosado Angueta"
+                    },
+                    {
+                        "student_id": "A202504",
+                        "student_name": "Juan Carlos Caviedes"
+                    }
+                ]
+            },
+            "Cluster 1": {
+                "total_students": 1,
+                "average_grade": 9.7,
+                "average_time_per_connection": 58.6,
+                "students": [
+                    {
+                        "student_id": "A202503",
+                        "student_name": "Nara Boza Arzube"
+                    }
+                ]
+            },
+            "Cluster 2": {
+                "total_students": 1,
+                "average_grade": 8.7,
+                "average_time_per_connection": 53.3,
+                "students": [
+                    {
+                        "student_id": "A202501",
+                        "student_name": "Jeniffer López Aguiar"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "by_student": "The academic report provides detailed engagement metrics on four students, focusing on their login activity, time spent on the platform, and participation levels. Jeniffer López Aguiar has a promising engagement increase with frequent logins, whereas Luis Rosado Angueta and Juan Carlos Caviedes show declining participation trends and longer periods between logins. Meanwhile, Nara Boza Arzube maintains consistent engagement with high platform usage and a steady participation rate.",
+        "performance_statistics": "Overall, the student body displays diverse engagement patterns with an average grade of 7.78 amidst trends signifying stability, improvement, or decline. Students log in for an average of 47.15 minutes per session, but a general negative participation slope of -3.28 indicates declining activity for many. While some students are seeing improvement, others are experiencing a reduction in engagement, needing closer observation.",
+        "average_by_activity_type": "When comparing engagement by activity type, students show the highest performance on quizzes, with an average of 8.12. Forums and tasks follow closely, averaging 7.88 and 7.48, respectively. This indicates that students engage most effectively with quizzes, suggesting that they could be favorably inclined toward structured and assessed formats, while participation in forums and tasks is slightly lower.",
+        "top_3_students": "The top three students in terms of engagement are Nara Boza Arzube, Jeniffer López Aguiar, and Luis Rosado Angueta. Nara stands out with the highest average grades and consistent platform usage. Jeniffer has shown a significant improvement in both grades and participation, while Luis, despite being in the top three, shows room for improvement with declining participation though he demonstrates a stable grade trend.",
+        "students_below_average": "Luis Rosado Angueta and Juan Carlos Caviedes fall below the average in terms of engagement, which may be attributed to their less frequent access and lower platform activity. Luis shows stability in grades but with declining participation, while Juan struggles with missed activities and is on a downward grade trend, suggesting potential disengagement.",
+        "highest_participation": "Jeniffer López Aguiar and Nara Boza Arzube both exhibit the highest participation rates, engaging frequently and consistently with the platform. Their high participation reflects positively on their performance, signifying consistent contributions across various learning activities and a propensity for continuous engagement and learning.",
+        "lowest_participation": "Juan Carlos Caviedes and Luis Rosado Angueta, unfortunately, demonstrate the lowest participation, with notable gaps in logins and declining trends in their engagement metrics. This could potentially lead to further disengagement and requires strategic interventions to re-engage them with the learning activities.",
+        "students_at_risk": "Luis Rosado Angueta and Juan Carlos Caviedes are identified as at-risk students due to their consistently low engagement, as evidenced by infrequent logins, previous missed activities, and negative participation trends. These indicators suggest they may struggle to keep up academically without targeted support and interventions.",
+        "prediction_results": "The prediction outcomes highlight potential engagement challenges for Luis Rosado Angueta, despite a predicted grade of 7.92. The prediction model, with an RMSE of 1.02, suggests moderate accuracy, emphasizing the need for continuous monitoring to verify predictive insights against actual outcomes.",
+        "risk_results": "Risk assessments indicate no students are flagged specifically as high-risk based on current patterns, yet Luis Rosado's status as 'Safe' contradicts evidence of potential risk factors present in his engagement patterns. This points to limitations in the current model's ability to accurately identify risk levels.",
+        "clusters": "Students are categorized into clusters based on their engagement profiles. Cluster 0 includes Luis and Juan Carlos, who share lower average grades and platform time, indicating moderate engagement. Cluster 1, represented solely by Nara, exhibits high engagement levels with excellent academic performance, while Cluster 2 includes Jeniffer, showing a similar pattern with marked improvement. Each cluster reflects distinct engagement strategies and challenges."
+    }
+]

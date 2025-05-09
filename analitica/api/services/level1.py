@@ -4,8 +4,10 @@ import pandas as pd
 from datetime import datetime
 from ..api_ai.openai_helper import interpret_analysis
 from ..models.level1_model import train_or_update_model, cluster_students, train_or_update_performance_classifier
+from ..utils.utils import calculate_hash, start_timer, end_timer
 
 def academic_summary(data, language):
+    start_time = start_timer()
     df = flatten_activities(data)
     df = calculate_minutes_remaining_delivery(df)  
 
@@ -70,14 +72,21 @@ def academic_summary(data, language):
         "student_clustering": student_clustering,
         "performance_prediction": evaluation_performance
 
-
 }
 
     }
 
     #interpretation = '{}'
     interpretation = interpret_analysis(summary, language, level="level1")
-    return ([summary, interpretation])  
+    hash_value = calculate_hash({"summary": summary, "interpretation": interpretation})
+    processing_time = end_timer(start_time) 
+    metadata = {
+        "processing_time": f"{processing_time} seconds",
+        "language": language,
+        "hash": hash_value
+    }
+
+    return ([summary, interpretation, metadata])  
 
 
 def flatten_activities(data):

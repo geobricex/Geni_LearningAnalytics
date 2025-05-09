@@ -1,0 +1,203 @@
+[
+    {
+        "student_details": [
+            {
+                "student_id": "A202501",
+                "student_name": "Jeniffer López Aguiar",
+                "socioeconomic_level": "medio",
+                "family_income_monthly": 2100,
+                "income_per_capita": 420.0,
+                "employment_status": "trabaja medio tiempo",
+                "device_type": "laptop",
+                "has_internet_access": true,
+                "commute_time_minutes": 15,
+                "accesses_last_7_days": 6,
+                "total_connection_time_minutes": 320,
+                "resources_visited": 15,
+                "forum_posts": 3,
+                "average_grade": 9.5,
+                "risk_label": "Safe"
+            },
+            {
+                "student_id": "A202502",
+                "student_name": "Luis Rosado Angueta",
+                "socioeconomic_level": "bajo",
+                "family_income_monthly": 280,
+                "income_per_capita": 56.0,
+                "employment_status": "trabaja tiempo completo",
+                "device_type": "smartphone",
+                "has_internet_access": true,
+                "commute_time_minutes": 45,
+                "accesses_last_7_days": 3,
+                "total_connection_time_minutes": 180,
+                "resources_visited": 8,
+                "forum_posts": 1,
+                "average_grade": 7.0,
+                "risk_label": "Safe"
+            },
+            {
+                "student_id": "A202503",
+                "student_name": "Nara Boza Arzube",
+                "socioeconomic_level": "alto",
+                "family_income_monthly": 950,
+                "income_per_capita": 190.0,
+                "employment_status": "no trabaja",
+                "device_type": "laptop",
+                "has_internet_access": true,
+                "commute_time_minutes": 10,
+                "accesses_last_7_days": 7,
+                "total_connection_time_minutes": 410,
+                "resources_visited": 20,
+                "forum_posts": 5,
+                "average_grade": 10.0,
+                "risk_label": "Safe"
+            },
+            {
+                "student_id": "A202504",
+                "student_name": "Juan Carlos Caviedes",
+                "socioeconomic_level": "bajo",
+                "family_income_monthly": 230,
+                "income_per_capita": 46.0,
+                "employment_status": "trabaja medio tiempo",
+                "device_type": "ninguno",
+                "has_internet_access": false,
+                "commute_time_minutes": 60,
+                "accesses_last_7_days": 2,
+                "total_connection_time_minutes": 95,
+                "resources_visited": 4,
+                "forum_posts": 0,
+                "average_grade": 6.0,
+                "risk_label": "At Risk"
+            }
+        ],
+        "average_by_socioeconomic_level": {
+            "alto": 10.0,
+            "bajo": 6.5,
+            "medio": 9.5
+        },
+        "average_by_employment_status": {
+            "no trabaja": 10.0,
+            "trabaja medio tiempo": 7.75,
+            "trabaja tiempo completo": 7.0
+        },
+        "average_by_ethnicity": {
+            "mestiza": 8.12
+        },
+        "average_by_civil_status": {
+            "soltera": 8.12
+        },
+        "average_by_has_children": {
+            "false": 9.5,
+            "true": 7.67
+        },
+        "average_by_device_type": {
+            "laptop": 9.75,
+            "ninguno": 6.0,
+            "smartphone": 7.0
+        },
+        "average_by_zone_type": {
+            "rural": 6.5,
+            "urbana": 9.75
+        },
+        "average_by_internet_access": {
+            "false": 6.0,
+            "true": 8.83
+        },
+        "average_by_housing_condition": {
+            "adecuada": 8.12
+        },
+        "average_by_housing_ownership_status": {
+            "arrendada": 7.67,
+            "propia": 9.5
+        },
+        "overall_average_age": 25.75,
+        "overall_average_income": 890.0,
+        "overall_average_income_per_capita": 178.0,
+        "overall_average_housing_density": 1.64,
+        "overall_average_connection_time": 251.25,
+        "overall_average_commute_time": 32.5,
+        "correlations": {
+            "income_vs_average_grade": 0.77,
+            "dependents_vs_average_grade": -0.82,
+            "people_in_home_vs_average_grade": null,
+            "housing_density_vs_average_grade": 0.62,
+            "commute_time_vs_average_grade": -1.0,
+            "connection_time_vs_average_grade": 0.99
+        },
+        "performance_prediction": {
+            "rmse": 0.01,
+            "predictions": [
+                {
+                    "student_id": "A202502",
+                    "student_name": "Luis Rosado Angueta",
+                    "predicted_grade": 7.01
+                }
+            ]
+        },
+        "risk_classification": {
+            "accuracy": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0,
+            "students_predictions": [
+                {
+                    "student_id": "A202502",
+                    "student_name": "Luis Rosado Angueta",
+                    "predicted_risk": "At Risk"
+                }
+            ]
+        },
+        "clusters": {
+            "Cluster 0": {
+                "total_students": 2,
+                "average_grade": 6.5,
+                "average_income": 255.0,
+                "students": [
+                    {
+                        "student_id": "A202502",
+                        "student_name": "Luis Rosado Angueta"
+                    },
+                    {
+                        "student_id": "A202504",
+                        "student_name": "Juan Carlos Caviedes"
+                    }
+                ]
+            },
+            "Cluster 1": {
+                "total_students": 1,
+                "average_grade": 10.0,
+                "average_income": 950.0,
+                "students": [
+                    {
+                        "student_id": "A202503",
+                        "student_name": "Nara Boza Arzube"
+                    }
+                ]
+            },
+            "Cluster 2": {
+                "total_students": 1,
+                "average_grade": 9.5,
+                "average_income": 2100.0,
+                "students": [
+                    {
+                        "student_id": "A202501",
+                        "student_name": "Jeniffer López Aguiar"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "student_details": "The report encompasses four students with diverse socioeconomic backgrounds, technology access, and academic performance levels. Jeniffer López Aguiar belongs to a middle socioeconomic level with moderate family income and per capita income. She has robust technology access with a laptop and consistent internet, engages actively in academic activities, and performs excellently with an average grade of 9.5, placing her at low risk. Luis Rosado Angueta, from a lower socioeconomic background, works full-time, relies on a smartphone for academic work, and achieves a moderate average grade of 7.0. Despite limited access, he is assessed as 'Safe' but his engagement is relatively lower. Nara Boza Arzube, from a high socioeconomic level, does not work, has optimal internet and technology access, participates actively, and excels academically with a perfect 10.0 average grade. Juan Carlos Caviedes faces several barriers including low income, no access to devices, and longer commute times, which reflects in his lower academic performance of 6.0, classifying him as 'At Risk'. Each student’s unique educational engagement and technology access significantly aligns with their socioeconomic context and risk assessment.",
+        "demographic_distribution": "The overall average age of students, at approximately 25.75 years, suggests a mature group who might be balancing education with other life responsibilities. Gender distribution is not explicitly presented, but variations in commute times may suggest different regional living conditions. A diverse mix of urban and rural representations is depicted, with urban students performing better on average. Patterns seem indicative of urban students, likely having better educational tools and infrastructure, leading to higher academic engagement and performance.",
+        "economic_status": "The economic background of these students ranges from low to high socioeconomic levels, significantly impacting their academic performance. Higher family and per capita income levels correlate with improved academic outcomes, as students from such backgrounds exhibit less financial stress and better access to educational resources. Those from low-income backgrounds, such as Luis and Juan, face financial constraints that might impede learning, though not deterministically as they still strive for a passing grade. Overall, economic status is a pivotal element influencing students’ academic success, as apparent differences in average grades aligned with their economic tiers reveal.",
+        "technology_access": "Technology access varies from no access to comprehensive access to devices like laptops among the students. Notably, students with no or limited access, such as Juan who has no device, tend to have lower grades and engage less in online platforms compared to their counterparts who have laptops and stable internet access. Frequent use of a device is positively related to higher performance and engagement in academic activities as seen with Jeniffer and Nara, indicating a significant impact of technology on educational participation and success.",
+        "correlations_found": "Several significant correlations have been found between different variables. The strong positive correlation between connection time and average grades (0.99) underscores the importance of engagement in academic resources for achieving better academic performance. There is a negative correlation (-1.0) between commute time and average grades, indicating longer commute negatively impacts grades. Income has a notable positive correlation (0.77) with average grades, while the number of dependents shows a negative correlation (-0.82), suggesting greater family responsibilities may hinder academic performance.",
+        "suggested_interventions": "Based on the data, a multi-faceted intervention approach is recommended. For students from lower socioeconomic backgrounds, implementing financial aid or scholarship programs could alleviate economic burdens and potentially enhance their academic focus. Providing access to technological resources such as laptops and internet could bridge the digital divide, particularly for those like Juan, to increase online participation and academic engagement. Additionally, offering programs to mitigate the impact of long commute times, such as transportation support or more flexible online learning options, could further increase academic performance and reduce educational risks."
+    },
+    {
+        "processing_time": "22.14 seconds",
+        "language": "en",
+        "hash": "3dd0a8256de4d858f46bab9741b71b7d4bb9aeb1e4db307d688127da9f870e222d77dfc2a6f21b825510da49f03b3042f9f7c71c6185a44eec1569c2cd1fcd49"
+    }
+]

@@ -1,23 +1,28 @@
 {
-    "en": {
-      "by_student": "Summarize each student's engagement metrics, including login activity, time on platform, and participation.",
-      "performance_statistics": "Describe overall engagement trends using average times, login frequencies, and participation counts.",
-      "average_by_activity_type": "Compare student engagement across different activity types.",
-      "top_3_students": "Identify the students with the highest engagement and explain what makes them stand out.",
-      "students_below_average": "List students whose engagement falls below the average and explore potential causes.",
-      "highest_participation": "Describe the student or group with the highest participation and how it reflects on performance.",
-      "lowest_participation": "Describe who participated the least and possible implications.",
-      "students_at_risk": "Highlight students with consistently low engagement and flag them as potentially at risk."
-    },
-    "es": {
-      "by_student": "Resume las métricas de compromiso de cada estudiante, incluyendo actividad de inicio de sesión, tiempo en la plataforma y participación.",
-      "performance_statistics": "Describe las tendencias generales de compromiso con promedios de tiempo, frecuencia de inicio de sesión y participación.",
-      "average_by_activity_type": "Compara el compromiso entre diferentes tipos de actividad.",
-      "top_3_students": "Identifica a los 3 estudiantes con mayor compromiso y explica por qué se destacan.",
-      "students_below_average": "Lista los estudiantes cuyo compromiso está por debajo del promedio y analiza posibles causas.",
-      "highest_participation": "Describe quién tuvo la mayor participación y cómo se relaciona con su desempeño.",
-      "lowest_participation": "Describe quién tuvo la menor participación y qué implicaciones puede tener.",
-      "students_at_risk": "Destaca a los estudiantes con compromiso consistentemente bajo como potencialmente en riesgo."
-    }
+  "en": {
+    "by_student": "Summarize each student's engagement metrics, including login activity, time on platform, and participation.",
+    "performance_statistics": "Describe overall engagement trends using average times, login frequencies, and participation counts.",
+    "average_by_activity_type": "Compare student engagement across different activity types.",
+    "top_3_students": "Identify the students with the highest engagement and explain what makes them stand out.",
+    "students_below_average": "List students whose engagement falls below the average and explore potential causes.",
+    "highest_participation": "Describe the student or group with the highest participation and how it reflects on performance.",
+    "lowest_participation": "Describe who participated the least and possible implications.",
+    "students_at_risk": "Highlight students with consistently low engagement and flag them as potentially at risk.",
+    "prediction_results": "Summarize the predicted engagement outcomes for students, highlighting those with expected challenges.",
+    "risk_results": "Identify students who are predicted to be at risk based on their recent engagement patterns.",
+    "clusters": "Analyze student clusters based on engagement profiles and explain the characteristics of each group."
+  },
+  "es": {
+    "by_student": "Resume las métricas de compromiso de cada estudiante, incluyendo actividad de inicio de sesión, tiempo en la plataforma y participación.",
+    "performance_statistics": "Describe las tendencias generales de compromiso con promedios de tiempo, frecuencia de inicio de sesión y participación.",
+    "average_by_activity_type": "Compara el compromiso entre diferentes tipos de actividad.",
+    "top_3_students": "Identifica a los 3 estudiantes con mayor compromiso y explica por qué se destacan.",
+    "students_below_average": "Lista los estudiantes cuyo compromiso está por debajo del promedio y analiza posibles causas.",
+    "highest_participation": "Describe quién tuvo la mayor participación y cómo se relaciona con su desempeño.",
+    "lowest_participation": "Describe quién tuvo la menor participación y qué implicaciones puede tener.",
+    "students_at_risk": "Destaca a los estudiantes con compromiso consistentemente bajo como potencialmente en riesgo.",
+    "prediction_results": "Resume los resultados de predicción de compromiso para los estudiantes, destacando aquellos con posibles desafíos.",
+    "risk_results": "Identifica a los estudiantes que se predicen en riesgo según sus patrones recientes de compromiso.",
+    "clusters": "Analiza los clústeres de estudiantes según sus perfiles de compromiso y explica las características de cada grupo."
   }
-  
+}

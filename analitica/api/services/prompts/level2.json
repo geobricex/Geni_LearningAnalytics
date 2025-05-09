@@ -1,17 +1,22 @@
 {
-    "en": {
-      "interaction_per_student": "Summarize the interaction activity for each student including messages, forums, and resource usage.",
-      "interaction_statistics": "Describe overall interaction patterns using aggregate statistics (e.g., average messages, resources accessed).",
-      "students_at_risk": "List students with low interaction who might be disengaged.",
-      "students_without_forum_participation": "Identify students who did not participate in any forum and explain the concern.",
-      "students_with_few_resources": "List students who accessed very few learning resources and may need extra support."
-    },
-    "es": {
-      "interaction_per_student": "Resume la actividad de interacción de cada estudiante, incluyendo mensajes, foros y uso de recursos.",
-      "interaction_statistics": "Describe patrones generales de interacción utilizando estadísticas agregadas (promedios, totales, etc.).",
-      "students_at_risk": "Lista de estudiantes con poca interacción que podrían estar desconectados.",
-      "students_without_forum_participation": "Identifica a los estudiantes que no participaron en ningún foro y explica por qué es relevante.",
-      "students_with_few_resources": "Muestra a los estudiantes que accedieron a pocos recursos educativos y podrían requerir apoyo adicional."
-    }
+  "en": {
+    "interaction_per_student": "Summarize the interaction activity for each student, including messages, forums, and resource usage.",
+    "interaction_statistics": "Describe overall interaction patterns using aggregate statistics (e.g., average messages, resources accessed).",
+    "students_at_risk": "List students with low interaction who might be disengaged.",
+    "students_without_forum_participation": "Identify students who did not participate in any forum and explain the concern.",
+    "students_with_few_resources": "List students who accessed very few learning resources and may need extra support.",
+    "interaction_time_prediction": "Interpret the model's prediction of connection time. Identify students likely to spend more or less time on the platform.",
+    "interaction_clusters": "Analyze the student clusters based on interaction patterns. Discuss the characteristics of each group and their potential academic needs.",
+    "interaction_risk_prediction": "Interpret the risk classification model. Identify students at risk of low interaction and propose interventions."
+  },
+  "es": {
+    "interaction_per_student": "Resume la actividad de interacción de cada estudiante, incluyendo mensajes, foros y uso de recursos.",
+    "interaction_statistics": "Describe patrones generales de interacción utilizando estadísticas agregadas (promedios, totales, etc.).",
+    "students_at_risk": "Lista de estudiantes con poca interacción que podrían estar desconectados.",
+    "students_without_forum_participation": "Identifica a los estudiantes que no participaron en ningún foro y explica por qué es relevante.",
+    "students_with_few_resources": "Muestra a los estudiantes que accedieron a pocos recursos educativos y podrían requerir apoyo adicional.",
+    "interaction_time_prediction": "Interpreta la predicción del modelo sobre el tiempo de conexión. Identifica a los estudiantes que probablemente pasen más o menos tiempo en la plataforma.",
+    "interaction_clusters": "Analiza los grupos de estudiantes según sus patrones de interacción. Describe las características de cada grupo y sus posibles necesidades académicas.",
+    "interaction_risk_prediction": "Interpreta el modelo de clasificación de riesgo. Identifica a los estudiantes con baja interacción y propone intervenciones."
   }
-  
+}

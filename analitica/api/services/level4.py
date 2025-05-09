@@ -1,7 +1,10 @@
 import pandas as pd
 from ..api_ai.openai_helper import interpret_analysis
+from ..models.level4_model import train_or_update_engagement_prediction, classify_engagement_risk, cluster_engagement_patterns
+from ..utils.utils import calculate_hash, start_timer, end_timer
 
 def engagement_summary(data, language):
+    start_time = start_timer()
     df, df_activities = flatten_engagement(data)
     df = convert_dates(df)
     performance_stats = calculate_engagement_statistics(df)
@@ -11,6 +14,11 @@ def engagement_summary(data, language):
     highest_participation, lowest_participation = get_extreme_participation(df)
     df = format_dates(df)
 
+    # Generación de predicciones y clusters
+    prediction_model, prediction_results = train_or_update_engagement_prediction(df)
+    risk_model, risk_results = classify_engagement_risk(df)
+    clusters = cluster_engagement_patterns(df)
+
     summary = {
         "by_student": df.to_dict(orient="records"),
         "performance_statistics": performance_stats,
@@ -19,13 +27,26 @@ def engagement_summary(data, language):
         "students_below_average": below_average_students,
         "highest_participation": highest_participation,
         "lowest_participation": lowest_participation,
-        "students_at_risk": at_risk_students
+        "students_at_risk": at_risk_students,
+
+        "prediction_results": prediction_results,
+        "risk_results": risk_results,
+        "clusters": clusters
     }
 
     summary = convert_summary_to_serializable(summary)
 
     interpretation = interpret_analysis(summary, language, level="level4")
-    return [summary, interpretation]
+
+    processing_time = end_timer(start_time) 
+
+    hash_value = calculate_hash({"summary": summary, "interpretation": interpretation})
+    metadata = {
+        "processing_time": f"{processing_time} seconds",
+        "language": language,
+        "hash": hash_value
+    }
+    return [summary, interpretation, metadata]
 
 def flatten_engagement(data):
     rows = []

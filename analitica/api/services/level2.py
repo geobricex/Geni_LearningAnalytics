@@ -1,23 +1,44 @@
 import pandas as pd
 from ..api_ai.openai_helper import interpret_analysis
+from ..models.level2_model import train_or_update_interaction_model, cluster_interaction_patterns, classify_interaction_risk
+from ..utils.utils import calculate_hash, start_timer, end_timer
 
 def interaction_summary(data, language):
+    start_time = start_timer()  
     df = flatten_interaction(data)
     statistics = calculate_interaction_statistics(df)
     at_risk_students = identify_students_at_risk(df)
     no_forum_participation = students_with_no_forum_participation(df)
     few_resources = students_with_few_resources(df)
 
+    model, evaluation_time = train_or_update_interaction_model(df)
+
+    clusters = cluster_interaction_patterns(df)
+
+    model_risk, evaluation_risk = classify_interaction_risk(df)
+
     summary = {
         "interaction_per_student": df.to_dict(orient="records"),
         "interaction_statistics": statistics,
         "students_at_risk": at_risk_students,
         "students_without_forum_participation": no_forum_participation,
-        "students_with_few_resources": few_resources
+        "students_with_few_resources": few_resources,
+
+        "interaction_time_prediction": evaluation_time,
+        "interaction_clusters": clusters,
+        "interaction_risk_prediction": evaluation_risk
     }
 
     interpretation = interpret_analysis(summary, language, level="level2")
-    return [summary, interpretation]
+    hash_value = calculate_hash({"summary": summary, "interpretation": interpretation})
+
+    processing_time = end_timer(start_time) 
+    metadata = {
+        "processing_time": f"{processing_time} seconds",
+        "language": language,
+        "hash": hash_value
+    }
+    return [summary, interpretation, metadata]
 
 def flatten_interaction(data):
     rows = []

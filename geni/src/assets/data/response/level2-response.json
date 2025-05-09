@@ -1,0 +1,190 @@
+[
+    {
+        "interaction_per_student": [
+            {
+                "student_id": "A202501",
+                "student_name": "Jeniffer López Aguiar",
+                "accesses_last_7_days": 6,
+                "total_connection_time_minutes": 320,
+                "resources_visited": 15,
+                "forum_posts": 3,
+                "total_activities": 2,
+                "average_grade": 8.75,
+                "minimum_grade": 8.0,
+                "maximum_grade": 9.5,
+                "time_per_access": 53.33,
+                "time_per_activity": 160.0,
+                "resources_per_activity": 7.5,
+                "forum_posts_per_activity": 1.5,
+                "efficiency": 0.0273,
+                "consistency": 1.5,
+                "interaction_cluster": 2,
+                "interaction_label": 1
+            },
+            {
+                "student_id": "A202502",
+                "student_name": "Luis Rosado Angueta",
+                "accesses_last_7_days": 3,
+                "total_connection_time_minutes": 180,
+                "resources_visited": 8,
+                "forum_posts": 1,
+                "total_activities": 2,
+                "average_grade": 7.25,
+                "minimum_grade": 7.0,
+                "maximum_grade": 7.5,
+                "time_per_access": 60.0,
+                "time_per_activity": 90.0,
+                "resources_per_activity": 4.0,
+                "forum_posts_per_activity": 0.5,
+                "efficiency": 0.0403,
+                "consistency": 0.5,
+                "interaction_cluster": 0,
+                "interaction_label": 0
+            },
+            {
+                "student_id": "A202503",
+                "student_name": "Nara Boza Arzube",
+                "accesses_last_7_days": 7,
+                "total_connection_time_minutes": 410,
+                "resources_visited": 20,
+                "forum_posts": 5,
+                "total_activities": 2,
+                "average_grade": 9.75,
+                "minimum_grade": 9.5,
+                "maximum_grade": 10.0,
+                "time_per_access": 58.57,
+                "time_per_activity": 205.0,
+                "resources_per_activity": 10.0,
+                "forum_posts_per_activity": 2.5,
+                "efficiency": 0.0238,
+                "consistency": 0.5,
+                "interaction_cluster": 1,
+                "interaction_label": 1
+            },
+            {
+                "student_id": "A202504",
+                "student_name": "Juan Carlos Caviedes",
+                "accesses_last_7_days": 2,
+                "total_connection_time_minutes": 95,
+                "resources_visited": 4,
+                "forum_posts": 0,
+                "total_activities": 2,
+                "average_grade": 6.25,
+                "minimum_grade": 6.0,
+                "maximum_grade": 6.5,
+                "time_per_access": 47.5,
+                "time_per_activity": 47.5,
+                "resources_per_activity": 2.0,
+                "forum_posts_per_activity": 0.0,
+                "efficiency": 0.0658,
+                "consistency": 0.5,
+                "interaction_cluster": 0,
+                "interaction_label": 0
+            }
+        ],
+        "interaction_statistics": {
+            "average_accesses": 4.5,
+            "average_connection_time": 251.25,
+            "average_resources_visited": 11.75,
+            "average_forum_posts": 2.25,
+            "average_time_per_access": 54.85,
+            "average_time_per_activity": 125.62,
+            "average_resources_per_activity": 5.88,
+            "average_forum_posts_per_activity": 1.12,
+            "most_connected_student": "Nara Boza Arzube",
+            "most_forum_participation": "Nara Boza Arzube",
+            "least_forum_participation": "Juan Carlos Caviedes"
+        },
+        "students_at_risk": [
+            {
+                "student_id": "A202504",
+                "student_name": "Juan Carlos Caviedes",
+                "average_grade": 6.25,
+                "accesses_last_7_days": 2
+            }
+        ],
+        "students_without_forum_participation": [
+            {
+                "student_id": "A202504",
+                "student_name": "Juan Carlos Caviedes",
+                "forum_posts": 0
+            }
+        ],
+        "students_with_few_resources": [],
+        "interaction_time_prediction": {
+            "rmse": 18.4,
+            "predictions": [
+                {
+                    "student_id": "A202502",
+                    "student_name": "Luis Rosado Angueta",
+                    "predicted_connection_time": 161.6
+                }
+            ]
+        },
+        "interaction_clusters": {
+            "Cluster 0": {
+                "total_students": 2,
+                "average_accesses": 2.5,
+                "average_resources": 6.0,
+                "average_forum_posts": 0.5,
+                "students": [
+                    {
+                        "student_id": "A202502",
+                        "student_name": "Luis Rosado Angueta"
+                    },
+                    {
+                        "student_id": "A202504",
+                        "student_name": "Juan Carlos Caviedes"
+                    }
+                ]
+            },
+            "Cluster 1": {
+                "total_students": 1,
+                "average_accesses": 7.0,
+                "average_resources": 20.0,
+                "average_forum_posts": 5.0,
+                "students": [
+                    {
+                        "student_id": "A202503",
+                        "student_name": "Nara Boza Arzube"
+                    }
+                ]
+            },
+            "Cluster 2": {
+                "total_students": 1,
+                "average_accesses": 6.0,
+                "average_resources": 15.0,
+                "average_forum_posts": 3.0,
+                "students": [
+                    {
+                        "student_id": "A202501",
+                        "student_name": "Jeniffer López Aguiar"
+                    }
+                ]
+            }
+        },
+        "interaction_risk_prediction": {
+            "accuracy": 1.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0,
+            "students_predictions": [
+                {
+                    "student_id": "A202502",
+                    "student_name": "Luis Rosado Angueta",
+                    "predicted_label": "At Risk"
+                }
+            ]
+        }
+    },
+    {
+        "interaction_per_student": "The interaction activity for each student is detailed through metrics such as messages sent, forums participated in, and resources accessed. Jeniffer López Aguiar engaged significantly with 15 resources visited and 3 forum posts over the last 7 days. Luis Rosado Angueta showed minimal interaction with only 3 accesses and 1 forum post. Nara Boza Arzube was the most active with the highest number of accesses, 7, and 20 resources visited. Juan Carlos Caviedes exhibited very low interaction, with only 2 accesses and no forum participation, which is concerning for his overall engagement.",
+        "interaction_statistics": "The overall interaction patterns suggest a moderate level of engagement among students, with an average of 4.5 accesses and 11.75 resources visited. The average connection time is 251.25 minutes, indicating substantial use of platform resources. Nara Boza Arzube stands out as the most connected student, showing strong participation in forums as well. On the contrary, Juan Carlos Caviedes registered the least forum activity, highlighting an area for potential improvement.",
+        "students_at_risk": "Juan Carlos Caviedes has been identified as at risk according to his minimal interaction data. With an average grade of 6.25 and only 2 accesses in the past week, he is at a significant risk of disengaging. This suggests a need for interventions to encourage his participation and engagement with course materials and forums.",
+        "students_without_forum_participation": "Juan Carlos Caviedes is the only student without any forum participation, which may indicate disengagement or lack of comfort in contributing to discussions. This absence from forums is concerning as it limits peer interactions and collaboration, essential components of the learning experience.",
+        "students_with_few_resources": "The data does not list any students as accessing very few resources, indicating that most students are meeting or exceeding the expected engagement with learning materials, except for those without forum participation, which is another indicator of less than optimal engagement.",
+        "interaction_time_prediction": "The model predicts that Luis Rosado Angueta is expected to spend around 161.6 minutes on the platform. Given the root mean square error of 18.4, there could be variability in the prediction, but it suggests Luis might invest moderate time connecting, aligning with his current pattern of slightly lower interaction compared to other students.",
+        "interaction_clusters": "Students are grouped into three clusters based on their interaction patterns. Cluster 0 includes Luis Rosado Angueta and Juan Carlos Caviedes, characterized by low access, few resources, and minimal forum activity. Cluster 1 consists of Nara Boza Arzube, who exhibits high engagement in all metrics, highlighting a need for advanced and enriching academic activities. Cluster 2 contains Jeniffer López Aguiar, representing moderate access and resource usage, suggesting a balanced interaction profile that should be maintained.",
+        "interaction_risk_prediction": "The risk classification model identified Luis Rosado Angueta as 'At Risk' of low interaction, despite high accuracy overall. However, precision, recall, and F1 scores are all 0.0, indicating a possible over-reliance on accuracy which might ignore nuances of individual performance. Strategies like personalized feedback and engaging tasks can be developed to minimize this risk and encourage consistent participation."
+    }
+]

@@ -1,15 +1,54 @@
 import pandas as pd
 from datetime import datetime
+import json
 from ..api_ai.openai_helper import interpret_analysis
+from ..models.level3_model import train_or_update_academic_performance_model, classify_socioeconomic_risk, cluster_socioeconomic_profiles
+from ..utils.utils import calculate_hash, start_timer, end_timer
+
 
 def socioeconomic_summary(data, language):
+    start_time = start_timer()  
+
     df = flatten_socioeconomic_data(data)
     df = calculate_age(df)
     correlations = extract_correlations(df)
-    summary = generate_groupings(df, correlations)
 
+    # Generación de predicciones y clusters
+    performance_model, performance_results = train_or_update_academic_performance_model(df)
+    risk_model, risk_results = classify_socioeconomic_risk(df)
+    clusters = cluster_socioeconomic_profiles(df)
+
+    summary = generate_groupings(df, correlations)
+    summary["performance_prediction"] = performance_results
+    summary["risk_classification"] = risk_results
+    summary["clusters"] = clusters
+
+    # Obtener la interpretación directamente como diccionario
     interpretation = interpret_analysis(summary, language, level="level3")
-    return [summary, interpretation]
+
+    # Verificar si la interpretación ya es un diccionario
+    if not isinstance(interpretation, dict):
+        try:
+            # Intentar convertir la interpretación a diccionario
+            interpretation = json.loads(interpretation)
+        except json.JSONDecodeError:
+            # Si falla, manejar el error
+            interpretation = {
+                "error": "Could not parse response as JSON",
+                "raw_response": str(interpretation)
+            }
+
+    hash_value = calculate_hash({"summary": summary, "interpretation": interpretation})
+    processing_time = end_timer(start_time) 
+
+    metadata = {
+        "processing_time": f"{processing_time} seconds",
+        "language": language,
+        "hash": hash_value
+    }
+
+    return [summary, interpretation, metadata]
+
 
 def flatten_socioeconomic_data(data):
     rows = []
@@ -23,10 +62,15 @@ def flatten_socioeconomic_data(data):
         dependents = student.get("dependents_count", 1)
         rooms = student.get("rooms_in_home", 1)
 
+        # Formatear fecha de nacimiento como cadena si existe
+        birth_date = student.get("birth_date")
+        if birth_date:
+            birth_date = str(pd.to_datetime(birth_date).date())
+
         rows.append({
             "student_id": student.get("student_id"),
             "student_name": student.get("student_name"),
-            "birth_date": student.get("birth_date"),
+            "birth_date": birth_date,  # Usar cadena en lugar de Timestamp
             "gender": student.get("gender"),
             "ethnicity": student.get("ethnicity"),
             "civil_status": student.get("civil_status"),
@@ -58,6 +102,24 @@ def flatten_socioeconomic_data(data):
         })
     return pd.DataFrame(rows)
 
+def convert_timestamps_to_str(data):
+    """
+    Convierte todos los valores de tipo Timestamp en el diccionario o DataFrame a cadenas.
+    """
+    if isinstance(data, pd.DataFrame):
+        data = data.replace({pd.NaT: None})  # Reemplazar NaT por None
+        for col in data.select_dtypes(include=['datetime', 'datetime64[ns]', 'Timestamp']).columns:
+            data[col] = data[col].dt.strftime('%Y-%m-%d')
+    elif isinstance(data, dict):
+        for key, value in data.items():
+            if isinstance(value, pd.Timestamp):
+                data[key] = value.strftime('%Y-%m-%d')
+            elif isinstance(value, dict):
+                data[key] = convert_timestamps_to_str(value)
+            elif isinstance(value, list):
+                data[key] = [convert_timestamps_to_str(item) if isinstance(item, dict) else item for item in value]
+    return data
+
 def calculate_age(df):
     df["birth_date"] = pd.to_datetime(df["birth_date"], errors='coerce')
     df["calculated_age"] = df["birth_date"].apply(lambda x: datetime.now().year - x.year if pd.notnull(x) else None)
@@ -82,7 +144,28 @@ def extract_correlations(df):
     }
 
 def generate_groupings(df, correlations):
+    student_details = []
+    for _, row in df.iterrows():
+        student_details.append({
+            "student_id": row["student_id"],
+            "student_name": row["student_name"],
+            "socioeconomic_level": row["socioeconomic_level"],
+            "family_income_monthly": row["family_income_monthly"],
+            "income_per_capita": row["income_per_capita"],
+            "employment_status": row["employment_status"],
+            "device_type": row["device_type"],
+            "has_internet_access": row["has_internet_access"],
+            "commute_time_minutes": row["commute_time_minutes"],
+            "accesses_last_7_days": row["accesses_last_7_days"],
+            "total_connection_time_minutes": row["total_connection_time_minutes"],
+            "resources_visited": row["resources_visited"],
+            "forum_posts": row["forum_posts"],
+            "average_grade": row["average_grade"],
+            "risk_label": "At Risk" if row["average_grade"] < 7.0 else "Safe"
+        })
+
     return {
+        "student_details": student_details,
         "average_by_socioeconomic_level": df.groupby("socioeconomic_level")["average_grade"].mean().round(2).to_dict(),
         "average_by_employment_status": df.groupby("employment_status")["average_grade"].mean().round(2).to_dict(),
         "average_by_ethnicity": df.groupby("ethnicity")["average_grade"].mean().round(2).to_dict(),
@@ -101,3 +184,4 @@ def generate_groupings(df, correlations):
         "overall_average_commute_time": round(df["commute_time_minutes"].mean(), 2),
         "correlations": correlations
     }
+
