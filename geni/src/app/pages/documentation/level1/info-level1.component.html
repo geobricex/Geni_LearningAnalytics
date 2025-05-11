@@ -1,0 +1,191 @@
+<p-tabView class="p-mt-4">
+    <p-tabPanel header="Schema Level 1">
+        <p-card header="Schema Description" class="p-mb-3 shadow-3">
+            <div class="p-card-body">
+                <p class="text-lg">Level 1 contains the structured representation of individual academic data, captured
+                    from virtual classroom educational platforms. It is designed to facilitate interoperability between
+                    consumer applications and educational analytics web services, allowing automated processing,
+                    descriptive analysis, visualization generation, and interpretation return using language models.</p>
+            </div>
+        </p-card>
+
+        <p-card header="General Structure" class="p-mb-3 shadow-3">
+            <div class="p-card-body">
+                <p class="text-lg">Level 1 is an array of objects, where each object corresponds to a student enrolled
+                    in a specific course, with a set of associated academic activities. This hierarchical structure is
+                    compatible with object-oriented analysis schemas and DataFrame-like structures.</p>
+            </div>
+        </p-card>
+
+        <p-card header="Student Attributes" class="p-mb-3 shadow-3">
+            <ul class="list-disc pl-6 text-lg">
+                <li><strong>student_id</strong> (str): Unique identifier of the student.</li>
+                <li><strong>student_name</strong> (str): Full name of the registered student.</li>
+                <li><strong>course_id</strong> (str): Course identifier code.</li>
+                <li><strong>course_name</strong> (str): Formal name of the course.</li>
+                <li><strong>activities</strong> (list): List of activities evaluated by the teacher.</li>
+            </ul>
+        </p-card>
+
+        <p-card header="Activity Attributes" class="p-mb-3 shadow-3">
+            <ul class="list-disc pl-6 text-lg">
+                <li><strong>activity_id</strong> (str): Unique identifier of the activity.</li>
+                <li><strong>type</strong> (str): Type of academic activity ("quiz", "forum", "task", etc.).</li>
+                <li><strong>title</strong> (str): Name or description of the activity.</li>
+                <li><strong>grade</strong> (float): Grade obtained with up to two decimals.</li>
+                <li><strong>max_grade</strong> (float): Maximum score set for the activity.</li>
+                <li><strong>submission_date</strong> (str, ISO 8601): Submission date and time in `YYYY-MM-DDTHH:MM:SSZ`
+                    format (UTC).</li>
+                <li><strong>observation</strong> (str): Teacher's qualitative comment on the student's performance.</li>
+            </ul>
+        </p-card>
+
+        <p-card header="Example Entry" class="p-mb-3 shadow-3">
+            <pre><code>{{ SchemaLevel1_1 }}</code></pre>
+        </p-card>
+    </p-tabPanel>
+
+    <p-tabPanel header="Automated Academic Analysis">
+        <p-card header="Script Description" class="p-mb-3 shadow-3">
+            <div class="p-card-body">
+                <p class="text-lg">This script performs detailed statistical analysis of structured academic information
+                    from a JSON object named schema, which contains data of students and their evaluated activities. The
+                    objective is to consolidate an analytical summary useful for decision-making in educational
+                    environments, facilitating both result visualization and identification of relevant patterns.</p>
+            </div>
+        </p-card>
+
+        <p-card header="What the script does" class="p-mb-3 shadow-3">
+            <ul class="list-disc pl-6 text-lg">
+                <li>Reads the JSON object with hierarchical data (by student and activity).</li>
+                <li>Flattens the structure into a tabular format using <code>pandas</code> for more efficient analysis.
+                </li>
+            </ul>
+        </p-card>
+
+        <p-card header="Student Statistics" class="p-mb-3 shadow-3">
+            <ul class="list-disc pl-6 text-lg">
+                <li>Total number of activities per student.</li>
+                <li>Average grades, minimum and maximum grades.</li>
+                <li>Alphabetical ordering of results for easier institutional reading.</li>
+            </ul>
+        </p-card>
+
+        <p-card header="Global Statistics" class="p-mb-3 shadow-3">
+            <ul class="list-disc pl-6 text-lg">
+                <li>Calculation of general average, median, mode, standard deviation, and variance.</li>
+                <li>Quartiles (Q1, Q2, Q3) and grade range.</li>
+                <li>Count of students, perfect grades, and failures.</li>
+                <li>Grade distribution by ranges (&lt;6, 6-6.99, etc.).</li>
+                <li>Distribution by activity type (quiz, forum, etc.).</li>
+            </ul>
+        </p-card>
+
+        <p-card header="Key Cases Detection" class="p-mb-3 shadow-3">
+            <ul class="list-disc pl-6 text-lg">
+                <li>Student with the highest and lowest number of activities.</li>
+                <li>Students with the highest and lowest average.</li>
+                <li>Best and worst evaluated activity.</li>
+                <li>Students below the general average.</li>
+            </ul>
+        </p-card>
+
+        <p-card header="Activity Analysis" class="p-mb-3 shadow-3">
+            <ul class="list-disc pl-6 text-lg">
+                <li>Average per type ("quiz", "forum", etc.).</li>
+                <li>Average per activity title.</li>
+                <li>Average per submission date.</li>
+                <li>Variance by activity type.</li>
+                <li>Activities with the greatest grade dispersion.</li>
+            </ul>
+        </p-card>
+
+        <p-card header="Cross Analysis" class="p-mb-3 shadow-3">
+            <ul class="list-disc pl-6 text-lg">
+                <li>Pivot table of average per student and activity type.</li>
+                <li>Daily averages aggregated by submission date.</li>
+            </ul>
+        </p-card>
+
+        <p-card header="Produced Output" class="p-mb-3 shadow-3">
+            <pre><code>{{ SchemaLevel1_2 }}</code></pre>
+        </p-card>
+    </p-tabPanel>
+
+
+    <p-tabPanel header="Academic Results Report">
+    <p-card header="Generated Report" class="p-mb-3 shadow-3">
+        <div class="p-card-body">
+            <p class="text-lg">This document provides a structured summary of the results obtained after processing the academic data stored in the JSON object. The processing was performed using an automated script that allowed extracting, calculating, and organizing key metrics regarding student performance. Below are the main analysis blocks generated and their usefulness in educational evaluation contexts.</p>
+        </div>
+    </p-card>
+
+    <p-card header="Global Statistics" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Calculated key statistical indicators like general average, median, mode, standard deviation, variance, quartiles, and grade range.</li>
+            <li>Identification of maximum and minimum grades achieved, number of evaluated students, and number of different recorded activities.</li>
+            <li>Helps in understanding the general group behavior and evaluating the homogeneity of the teaching-learning process.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Individual Performance" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Generated a performance profile for each student, including their average, highest, and lowest grades, as well as the total activities performed.</li>
+            <li>Facilitates identifying students with high performance, acceptable performance, or at risk of academic failure.</li>
+            <li>Top three students with the best average and those below the general average are listed.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Activity Type and Title Analysis" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Calculated averages, minimum, and maximum values for each type of activity (e.g., quiz or forum) and for each specific recorded activity.</li>
+            <li>Helps determine which evaluation types yield better or worse results and whether any specific activities were particularly easy or demanding.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Temporal Analysis" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Grades were grouped according to the submission date, generating a daily average.</li>
+            <li>Allows observing if there are significant differences in performance depending on the evaluation time.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Dispersion and Variance" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Variances were calculated by activity type and title to assess which activities show greater heterogeneity in grades.</li>
+            <li>Helps identify tasks requiring design adjustments, more precise feedback, or criteria review.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Relevant Cases" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Students with the highest and lowest number of recorded activities.</li>
+            <li>Number of perfect grades and failing grades.</li>
+            <li>Grade distribution by range (less than 6, between 6 and 7, etc.).</li>
+            <li>Record distribution by activity type.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Activity and Student Cross Analysis" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>A matrix of averages by activity type and student was generated, allowing individual performance comparison in different evaluation types.</li>
+            <li>Useful for personalizing academic monitoring and understanding how each student responds to various evaluation methods.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Report Usefulness" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Personalized academic monitoring.</li>
+            <li>Evaluation of the quality and effectiveness of activities.</li>
+            <li>Design of adaptive pedagogical strategies.</li>
+            <li>Identification of learning gaps and intervention needs.</li>
+            <li>Evidence-based institutional decision-making.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Example of Results JSON" class="p-mb-3 shadow-3">
+        <pre><code>{{ SchemaLevel1_3 }}</code></pre>
+    </p-card>
+</p-tabPanel>
+
+</p-tabView>

@@ -41,7 +41,7 @@ export class AppMenu {
                     },
                     {
                         label: 'Level 3 - socioeconomic',
-                        icon: 'pi pi-fw pi-users', // 'pi pi-fw pi-briefcase'
+                        icon: 'pi pi-fw pi-users', 
                         routerLink: ['/pages/level3']
                     }
                 ]
@@ -52,12 +52,28 @@ export class AppMenu {
                     {
                         label: 'Documentation',
                         icon: 'pi pi-fw pi-book',
-                        routerLink: ['/documentation']
+                        items: [
+                            {
+                                label: 'Level 1 - academic',	
+                                icon: 'pi pi-fw pi-book',
+        	                    routerLink: ['/documentation/level1']
+                            },
+                            {
+                                label: 'Level 2 - interaction',
+                                icon: 'pi pi-fw pi-comments',
+        	                    routerLink: ['/documentation/level2']
+                            },
+                            {
+                                label: 'Level 3 - socioeconomic',
+                                icon: 'pi pi-fw pi-users',
+        	                    routerLink: ['/documentation/level3']
+                            }
+                        ]
                     },
                     {
                         label: 'View Source',
                         icon: 'pi pi-fw pi-github',
-                        url: 'https://github.com/primefaces/sakai-ng',
+                        url: 'https://github.com/geobricex/Geni_LearningAnalytics',
                         target: '_blank'
                     }
                 ]

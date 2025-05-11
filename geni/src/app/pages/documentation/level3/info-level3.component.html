@@ -1,0 +1,202 @@
+<p-tabView class="p-mt-4">
+
+    <p-tabPanel header="Schema Level 3">
+        <p-card header="Schema Description" class="p-mb-3 shadow-3">
+            <div class="p-card-body">
+                <p class="text-lg">Level 3 represents the most comprehensive version of the academic and contextual data
+                    structure of the student. It encompasses performance indicators, interaction metrics,
+                    sociodemographic variables, and socioeconomic conditions, allowing integral, intersectional, and
+                    predictive analysis in educational contexts.</p>
+            </div>
+        </p-card>
+
+        <p-card header="General Structure" class="p-mb-3 shadow-3">
+            <div class="p-card-body">
+                <p class="text-lg">Level 3 contains a list of objects where each object represents a student with
+                    personal, academic, digital, and family information relevant for educational analysis.</p>
+            </div>
+        </p-card>
+
+        <p-card header="Student Attributes" class="p-mb-3 shadow-3">
+            <ul class="list-disc pl-6 text-lg">
+                <li><strong>student_id</strong> (str): Unique identifier of the student.</li>
+                <li><strong>student_name</strong> (str): Full name.</li>
+                <li><strong>age</strong> (int): Current age of the student.</li>
+                <li><strong>gender</strong> (str): Self-perceived gender.</li>
+                <li><strong>has_internet_access</strong> (bool): Indicates if the student has internet access.</li>
+                <li><strong>device_type</strong> (str): Type of device used for studying.</li>
+                <li><strong>previous_school_type</strong> (str): Previous school type (public/private).</li>
+                <li><strong>parents_education_level</strong> (str): Educational level of parents.</li>
+                <li><strong>receives_scholarship</strong> (bool): Indicates if the student receives a scholarship.</li>
+                <li><strong>socioeconomic_level</strong> (str): Perceived socioeconomic level (high, medium, low).</li>
+                <li><strong>family_income_monthly</strong> (float): Monthly family income in dollars.</li>
+                <li><strong>dependents_count</strong> (int): Number of dependent persons in the household.</li>
+                <li><strong>employment_status</strong> (str): Employment status of the student.</li>
+                <li><strong>housing_type</strong> (str): Type of housing (owned, rented, irregular).</li>
+                <li><strong>zone_type</strong> (str): Geographical zone (urban/rural).</li>
+                <li><strong>birth_date</strong> (str): Birth date (YYYY-MM-DD).</li>
+                <li><strong>civil_status</strong> (str): Marital status.</li>
+                <li><strong>ethnicity</strong> (str): Self-identified ethnicity.</li>
+                <li><strong>has_children</strong> (bool): Indicates if the student has children.</li>
+                <li><strong>number_of_children</strong> (int): Number of children.</li>
+                <li><strong>housing_ownership_status</strong> (str): Housing tenure status (owned, rented, etc.).</li>
+                <li><strong>housing_condition</strong> (str): Housing condition.</li>
+                <li><strong>people_living_in_home</strong> (int): Number of people living in the household.</li>
+                <li><strong>rooms_in_home</strong> (int): Total number of rooms in the house.</li>
+                <li><strong>commute_time_minutes</strong> (int): Daily commute time to the institution (in minutes).
+                </li>
+            </ul>
+        </p-card>
+
+        <p-card header="Digital and Academic Interaction Attributes" class="p-mb-3 shadow-3">
+            <ul class="list-disc pl-6 text-lg">
+                <li><strong>course_id</strong> (str): Enrolled course code.</li>
+                <li><strong>course_name</strong> (str): Course name.</li>
+                <li><strong>accesses_last_7_days</strong> (int): Platform accesses in the last week.</li>
+                <li><strong>total_connection_time_minutes</strong> (int): Total connection time in minutes.</li>
+                <li><strong>resources_visited</strong> (int): Number of visited resources.</li>
+                <li><strong>forum_posts</strong> (int): Number of forum participations.</li>
+                <li><strong>activities</strong> (list): List of evaluated activities.</li>
+            </ul>
+        </p-card>
+
+        <p-card header="Activity Attributes" class="p-mb-3 shadow-3">
+            <ul class="list-disc pl-6 text-lg">
+                <li><strong>activity_id</strong> (str): Unique identifier of the activity.</li>
+                <li><strong>type</strong> (str): Type of activity (quiz, forum, task).</li>
+                <li><strong>title</strong> (str): Descriptive title of the activity.</li>
+                <li><strong>grade</strong> (float): Grade obtained.</li>
+                <li><strong>max_grade</strong> (float): Maximum possible grade.</li>
+                <li><strong>submission_date</strong> (str, ISO 8601): Submission date and time.</li>
+                <li><strong>observation</strong> (str): Teacher's comment on performance.</li>
+            </ul>
+        </p-card>
+
+        <p-card header="Example Entry" class="p-mb-3 shadow-3">
+            <pre><code>{{ SchemaLevel3_1 }}</code></pre>
+        </p-card>
+    </p-tabPanel>
+
+    <p-tabPanel header="Socioeconomic and Academic Analysis">
+    <p-card header="Script Description" class="p-mb-3 shadow-3">
+        <div class="p-card-body">
+            <p class="text-lg">This script processes a JSON object named schema, which contains academic, digital interaction, and sociodemographic data of students. The objective is to perform an integral analysis that explores relationships between life context and academic performance, incorporating inequality measures, housing conditions, and personal factors.</p>
+        </div>
+    </p-card>
+
+    <p-card header="What the Code Does" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Reads a JSON object with complete student records.</li>
+            <li>Extracts academic, economic, demographic, housing, and technological information.</li>
+            <li>Calculates derived indicators such as:</li>
+            <ul class="pl-8">
+                <li><strong>Per capita income</strong>.</li>
+                <li><strong>Income per dependent</strong>.</li>
+                <li><strong>Housing density</strong> (number of people per room).</li>
+                <li><strong>Estimated age</strong> from birth date.</li>
+            </ul>
+        </ul>
+    </p-card>
+
+    <p-card header="Individual Analysis" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Personal and family information.</li>
+            <li>Housing conditions and socioeconomic level.</li>
+            <li>Average grades and extreme grades.</li>
+            <li>Use of digital resources.</li>
+            <li>Composite indicators of inequality or vulnerability.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Socioacademic Correlations" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Correlation between family income and academic average.</li>
+            <li>Correlation between number of dependents, people in the household, density, or commute time and grades.</li>
+            <li>Connection time as a predictor of performance.</li>
+        </ul>
+        <p class="text-lg">This analysis explores potential associations useful for generating educational and social hypotheses.</p>
+    </p-card>
+
+    <p-card header="Grouping by Categories" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Academic averages grouped by:</li>
+            <ul class="pl-8">
+                <li>Socioeconomic level.</li>
+                <li>Employment type.</li>
+                <li>Ethnicity.</li>
+                <li>Civil status.</li>
+                <li>Presence of children.</li>
+                <li>Device type.</li>
+                <li>Geographical zone (urban/rural).</li>
+                <li>Housing condition.</li>
+                <li>Housing ownership.</li>
+                <li>Internet access.</li>
+            </ul>
+        </ul>
+    </p-card>
+
+    <p-card header="Generated Output" class="p-mb-3 shadow-3">
+        <p>The script generates a JSON response that contains a structured summary of the socioeconomic and academic analysis. This file is organized into two main blocks:</p>
+        <pre><code>{{ SchemaLevel3_2 }}</code></pre>
+    </p-card>
+</p-tabPanel>
+
+<p-tabPanel header="Socioeconomic and Academic Results">
+    <p-card header="Generated Socioeconomic and Academic Report" class="p-mb-3 shadow-3">
+        <div class="p-card-body">
+            <p class="text-lg">This document presents the results obtained after processing the JSON object, which integrates information about academic performance, digital interaction, and students' sociodemographic conditions. The generated analysis seeks to identify potential relationships between life context and academic performance.</p>
+        </div>
+    </p-card>
+
+    <p-card header="Individual Profile per Student" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Demographic data (calculated age, gender, ethnicity, civil status, presence of children).</li>
+            <li>Socioeconomic conditions (socioeconomic level, income, housing tenure, and condition).</li>
+            <li>Access and use of technology (device, internet connection, platform interaction).</li>
+            <li>Academic indicators (average, minimum, and maximum grade).</li>
+            <li>Derived indicators such as per capita income, income per dependent, and housing density.</li>
+        </ul>
+        <p class="text-lg">This level of detail allows constructing intersectional profiles useful for guidance plans, academic support, or vulnerability analysis.</p>
+    </p-card>
+
+    <p-card header="Global and Grouped Statistics" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>The <code>analyticalSummary</code> block groups and averages academic performance according to key categories:</li>
+            <ul class="pl-8">
+                <li><strong>Socioeconomic Level</strong>: High-income students average higher than low-income ones.</li>
+                <li><strong>Employment Type</strong>: Better performance among those who do not work or work part-time.</li>
+                <li><strong>Geographic Zone</strong>: Higher performance in urban areas compared to rural ones.</li>
+                <li><strong>Device Used</strong>: Laptop users achieve the highest averages.</li>
+                <li><strong>Internet Access</strong>: Connected students perform significantly better than disconnected ones.</li>
+            </ul>
+        </ul>
+        <p class="text-lg">General statistics such as average age, income, per capita income, and housing density were also identified.</p>
+    </p-card>
+
+    <p-card header="Key Correlations" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li><strong>Income vs. Average</strong>: 0.77 - Strong positive correlation between income and average grade.</li>
+            <li><strong>Dependents vs. Average</strong>: -0.82 - More dependents, lower performance.</li>
+            <li><strong>Density vs. Average</strong>: 0.62 - Higher housing density, better performance in this specific case.</li>
+            <li><strong>Commute Time vs. Average</strong>: -1.0 - Longer commute time associated with lower performance.</li>
+            <li><strong>Connection Time vs. Average</strong>: 0.99 - Strong association between digital connection and performance.</li>
+        </ul>
+        <p class="text-lg">These relationships support the design of targeted strategies and provide insights into the impact of context on learning.</p>
+    </p-card>
+
+    <p-card header="Report Usefulness" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Analyze educational inequalities from a comprehensive perspective.</li>
+            <li>Design focused academic support strategies.</li>
+            <li>Feed early warning systems considering contextual variables.</li>
+            <li>Identify structural factors that influence performance.</li>
+            <li>Support educational or social research with solid empirical evidence.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Example of Socioeconomic Results JSON" class="p-mb-3 shadow-3">
+        <pre><code>{{ SchemaLevel3_3 }}</code></pre>
+    </p-card>
+</p-tabPanel>
+
+</p-tabView>

@@ -1,0 +1,154 @@
+<p-tabView class="p-mt-4">
+
+<p-tabPanel header="Schema Level 2">
+    <p-card header="Schema Description" class="p-mb-3 shadow-3">
+        <div class="p-card-body">
+            <p class="text-lg">Level 2 extends Level 1 by incorporating indicators of student interaction in virtual learning environments. In addition to containing traditional academic information, it allows the evaluation of connection behaviors, forum participation, and resource usage. This structure supports the intersection between performance and digital engagement, providing a more comprehensive view of the educational process.</p>
+        </div>
+    </p-card>
+
+    <p-card header="General Structure" class="p-mb-3 shadow-3">
+        <div class="p-card-body">
+            <p class="text-lg">Level 2 is a list of objects, where each object represents a student with their performance and behavioral data in a specific subject.</p>
+        </div>
+    </p-card>
+
+    <p-card header="Student Attributes" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li><strong>student_id</strong> (str): Unique identifier of the student.</li>
+            <li><strong>student_name</strong> (str): Full name.</li>
+            <li><strong>course_id</strong> (str): Course code.</li>
+            <li><strong>course_name</strong> (str): Course name.</li>
+            <li><strong>accesses_last_7_days</strong> (int): Number of times accessed in the last week.</li>
+            <li><strong>total_connection_time_minutes</strong> (int): Total accumulated connection time in minutes.</li>
+            <li><strong>resources_visited</strong> (int): Total number of visited resources within the virtual classroom.</li>
+            <li><strong>forum_posts</strong> (int): Number of forum posts made.</li>
+            <li><strong>activities</strong> (list): List of evaluated activities.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Activity Attributes" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li><strong>activity_id</strong> (str): Unique identifier of the activity.</li>
+            <li><strong>type</strong> (str): Type of activity (e.g., "quiz", "forum").</li>
+            <li><strong>title</strong> (str): Title of the evaluative activity.</li>
+            <li><strong>grade</strong> (float): Grade obtained in the activity.</li>
+            <li><strong>max_grade</strong> (float): Maximum established score.</li>
+            <li><strong>submission_date</strong> (str, ISO 8601): Submission date and time.</li>
+            <li><strong>observation</strong> (str): Qualitative observation by the teacher regarding performance.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Example Entry" class="p-mb-3 shadow-3">
+        <pre><code>{{ SchemaLevel2_1 }}</code></pre>
+    </p-card>
+</p-tabPanel>
+
+
+<p-tabPanel header="Educational Interaction Analysis">
+    <p-card header="Script Description" class="p-mb-3 shadow-3">
+        <div class="p-card-body">
+            <p class="text-lg">This script processes a JSON object named schema, which contains both academic data and digital behavior variables, in order to generate a detailed report on student interaction in virtual learning environments. The analysis allows correlating academic performance with platform usage patterns.</p>
+        </div>
+    </p-card>
+
+    <p-card header="What the Code Does" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Reads a JSON object with hierarchical data per student.</li>
+            <li>Extracts access data, connection time, visited resources, forum posts, and grades.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Metrics Calculated Per Student" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Accesses in the last 7 days.</li>
+            <li>Total connection time (minutes).</li>
+            <li>Average grades, minimum and maximum grades.</li>
+            <li>Average per activity: time, resources, and forum participation.</li>
+            <li>Efficiency: average performance divided by connection time.</li>
+            <li>Consistency: difference between the highest and lowest grade.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Global Statistics" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>General averages and identification of outstanding cases.</li>
+            <li>Student with the longest connection time.</li>
+            <li>Students with the most and least forum participation.</li>
+            <li>Averages per time and resources.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Critical Pattern Detection" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>At-risk students: low academic average and low interaction.</li>
+            <li>Students with no forum participation.</li>
+            <li>Students with low resource visits.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Generated Output" class="p-mb-3 shadow-3">
+        <p>The script generates a JSON response with a structured summary of digital interaction analysis by student. This file is organized into key blocks that allow evaluating both academic performance and engagement with the educational platform.</p>
+        <pre><code>{{ SchemaLevel2_2 }}</code></pre>
+    </p-card>
+</p-tabPanel>
+
+<p-tabPanel header="Interaction Results Report">
+    <p-card header="Generated Interaction Report" class="p-mb-3 shadow-3">
+        <div class="p-card-body">
+            <p class="text-lg">This document provides a structured summary of the results generated after processing the JSON object, which combines academic data with digital interaction indicators. The analysis allows evaluating not only performance but also the degree of student participation in the virtual environment.</p>
+        </div>
+    </p-card>
+
+    <p-card header="General Statistics" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Number of accesses to the platform in the last 7 days.</li>
+            <li>Total connection time (in minutes).</li>
+            <li>Resources visited and forum participation.</li>
+            <li>Average times per access and per activity.</li>
+            <li>Relationship between platform usage and grades (efficiency).</li>
+            <li>Average participation in resources and forums per activity.</li>
+        </ul>
+        <p class="text-lg">These statistics provide insight into the general level of commitment and facilitate individual or longitudinal comparisons.</p>
+    </p-card>
+
+    <p-card header="Interaction by Student" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Academic average, highest and lowest grades.</li>
+            <li>Activities completed and time metrics.</li>
+            <li>Resources and forums relative to the number of activities.</li>
+            <li>Derived indicators such as <strong>efficiency</strong> (average divided by connection minutes) and <strong>consistency</strong> (grade variability).</li>
+        </ul>
+        <p class="text-lg">This analysis supports personalized educational guidance and the detection of at-risk profiles.</p>
+    </p-card>
+
+    <p-card header="Critical Case Identification" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Students at academic risk due to low grades and low interaction.</li>
+            <li>Students with no forum participation.</li>
+            <li>Students with limited resource exploration.</li>
+        </ul>
+        <p class="text-lg">These findings enable the design of early warnings and focused intervention strategies.</p>
+    </p-card>
+
+    <p-card header="Highlighted Cases" class="p-mb-3 shadow-3">
+        <p class="text-lg">The student with the most connection time and highest forum participation was <strong>Nara Boza Arzube</strong>, demonstrating a high level of commitment to the virtual environment. Conversely, <strong>Juan Carlos Caviedes</strong> presented the lowest level of interaction and fell below the expected performance threshold.</p>
+    </p-card>
+
+    <p-card header="Report Usefulness" class="p-mb-3 shadow-3">
+        <ul class="list-disc pl-6 text-lg">
+            <li>Comprehensive monitoring of student digital engagement.</li>
+            <li>Identification of platform usage patterns that influence performance.</li>
+            <li>Early detection of disconnected students.</li>
+            <li>Optimization of pedagogical strategies in virtual environments.</li>
+            <li>Support for tutoring processes, academic counseling, or data-driven teaching planning.</li>
+        </ul>
+    </p-card>
+
+    <p-card header="Example of Interaction Results JSON" class="p-mb-3 shadow-3">
+        <pre><code>{{ SchemaLevel2_3 }}</code></pre>
+    </p-card>
+</p-tabPanel>
+
+
+</p-tabView>
