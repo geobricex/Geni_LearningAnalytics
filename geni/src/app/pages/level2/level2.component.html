@@ -1,4 +1,263 @@
-<div class="card">
-    <div class="font-semibold text-xl mb-4">Empty Page - 2</div>
-    <p>Use this page to start from scratch and place your custom content.</p>
-</div>
+<p-tabView>
+
+    <!-- Tab 1: Visión General de Interacción -->
+    <p-tabPanel header="Interaction Overview">
+        <p-card header="Student Interaction Summary">
+            <p-table [value]="studentsData" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="student_name">Student</th>
+                        <th pSortableColumn="course_name">Course</th>
+                        <th pSortableColumn="accesses_last_7_days">Accesses (Last 7 Days)</th>
+                        <th pSortableColumn="resources_visited">Resources Visited</th>
+                        <th pSortableColumn="forum_posts">Forum Posts</th>
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-student>
+                    <tr>
+                        <td>{{ student.student_name }}</td>
+                        <td>{{ student.course_name }}</td>
+                        <td>{{ student.accesses_last_7_days }}</td>
+                        <td>{{ student.resources_visited }}</td>
+                        <td>{{ student.forum_posts }}</td>
+                        <td>
+                            <button pButton type="button" icon="pi pi-eye" label="View" (click)="openDetail(student)"
+                                class="p-button-sm"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+
+        <!-- Dialogo de detalles de actividades -->
+        <p-dialog header="Student Activity Detail" [(visible)]="showDialog" modal="true" [style]="{ width: '50vw' }">
+            <div *ngIf="selectedStudent">
+                <h3>{{ selectedStudent.student_name }}</h3>
+                <p-table [value]="selectedStudent.activities" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Grade</th>
+                            <th>Max Grade</th>
+                            <th>Submission Date</th>
+                            <th>Due Date</th>
+                            <th>Observation</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-activity>
+                        <tr>
+                            <td>{{ activity.type }}</td>
+                            <td>{{ activity.title }}</td>
+                            <td>{{ activity.grade }}</td>
+                            <td>{{ activity.max_grade }}</td>
+                            <td>{{ activity.submission_date | date: 'short' }}</td>
+                            <td>{{ activity.submission_final_date | date: 'short' }}</td>
+                            <td>{{ activity.observation }}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </p-dialog>
+    </p-tabPanel>
+
+    <!-- Tab 2: Vista Agrupada -->
+    <p-tabPanel header="Grouped View">
+        <p-card header="Student Activities Grouped">
+            <p-table [value]="groupedData" groupRowsBy="student_name" rowGroupMode="subheader" [paginator]="true"
+                [rows]="10">
+                <ng-template pTemplate="groupheader" let-student>
+                    <tr>
+                        <td colspan="7" class="font-bold">{{ student.student_name }}</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Type</th>
+                        <th>Title</th>
+                        <th>Grade</th>
+                        <th>Max Grade</th>
+                        <th>Submission Date</th>
+                        <th>Due Date</th>
+                        <th>Observation</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-activity>
+                    <tr>
+                        <td>{{ activity.type }}</td>
+                        <td>{{ activity.title }}</td>
+                        <td>{{ activity.grade }}</td>
+                        <td>{{ activity.max_grade }}</td>
+                        <td>{{ activity.submission_date | date: 'short' }}</td>
+                        <td>{{ activity.submission_final_date | date: 'short' }}</td>
+                        <td>{{ activity.observation }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+    </p-tabPanel>
+
+</p-tabView>
+
+<p-tabView class="mt-5">
+    <p-tabPanel header="JSON Format">
+        <p-card header="Raw JSON used for analysis">
+            <pre style="font-size: 0.75rem; padding: 1rem; border-radius: 0.5rem; max-height: 300px; overflow: auto;">
+                {{ groupedData | json }}
+        </pre>
+        </p-card>
+    </p-tabPanel>
+
+    <p-tabPanel header="XML Format">
+        <p-card header="Raw XML used for analysis">
+            <pre style="font-size: 0.75rem; padding: 1rem; border-radius: 0.5rem; max-height: 300px; overflow: auto;">
+                {{ rawDataXML }}
+            </pre>
+        </p-card>
+    </p-tabPanel>
+
+</p-tabView>
+
+<p-button label="Analyze Level 2" icon="pi pi-chart-line" (click)="analyzeLevel2()" class="p-button-success mt-3">
+</p-button>
+
+<p-tabView class="mt-5" *ngIf="analysisResult.length > 0">
+    <p-tabPanel header="General Statistics">
+        <!-- KPIs -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+            <p-card header="Average Accesses (Last 7 Days)">
+                <span class="font-bold text-lg">{{ analysisResult[0].interaction_statistics.average_accesses }}</span>
+            </p-card>
+            <p-card header="Average Connection Time (minutes)">
+                <span class="font-bold text-lg">{{ analysisResult[0].interaction_statistics.average_connection_time
+                    }}</span>
+            </p-card>
+            <p-card header="Average Resources Visited">
+                <span class="font-bold text-lg">{{ analysisResult[0].interaction_statistics.average_resources_visited
+                    }}</span>
+            </p-card>
+            <p-card header="Most Active Student">
+                <span class="font-bold text-lg">{{ analysisResult[0].interaction_statistics.most_connected_student
+                    }}</span>
+            </p-card>
+            <p-card header="Most Forum Participation">
+                <span class="font-bold text-lg">{{ analysisResult[0].interaction_statistics.most_forum_participation
+                    }}</span>
+            </p-card>
+            <p-card header="Least Forum Participation">
+                <span class="font-bold text-lg">{{ analysisResult[0].interaction_statistics.least_forum_participation
+                    }}</span>
+            </p-card>
+        </div>
+
+        <!-- Gráficos principales -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <p-card header="Access Distribution" class="custom-card">
+                <ngx-charts-bar-vertical *ngIf="accessDistributionChart.length > 0" [results]="accessDistributionChart"
+                    [xAxis]="true" [yAxis]="true" [legend]="false" [showXAxisLabel]="true" [showYAxisLabel]="true"
+                    xAxisLabel="Accesses" yAxisLabel="Number of Students" [scheme]="chartColorScheme"
+                    [animations]="true">
+                </ngx-charts-bar-vertical>
+                <p *ngIf="accessDistributionChart.length === 0">No data available for Access Distribution.</p>
+            </p-card>
+
+            <p-card header="Activity Participation" class="custom-card">
+                <ngx-charts-pie-chart *ngIf="activityParticipationChart.length > 0"
+                    [results]="activityParticipationChart" [legend]="true" [labels]="true" [scheme]="chartColorScheme"
+                    [legendTitle]="'Activity Participation'">
+                </ngx-charts-pie-chart>
+                <p *ngIf="activityParticipationChart.length === 0">No data available for Activity Participation.</p>
+            </p-card>
+        </div>
+
+    </p-tabPanel>
+
+    <p-tabPanel header="Student Performance">
+        <p-card header="Detailed Student Performance">
+            <p-table [value]="studentPerformanceData" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="student_name">Student</th>
+                        <th pSortableColumn="average_grade">Average Grade</th>
+                        <th pSortableColumn="total_activities">Total Activities</th>
+                        <th pSortableColumn="interaction_cluster">Cluster</th>
+                        <th pSortableColumn="predicted_performance">Predicted Performance</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-student>
+                    <tr>
+                        <td>{{ student.student_name }}</td>
+                        <td>{{ student.average_grade }}</td>
+                        <td>{{ student.total_activities }}</td>
+                        <td>{{ student.interaction_cluster }}</td>
+                        <td>{{ student.predicted_performance }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+    </p-tabPanel>
+
+    <p-tabPanel header="AI Insights">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <p-card header="Interaction Per Student">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1].interaction_per_student }}
+                </p>
+            </p-card>
+
+            <p-card header="Interaction Statistics">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1].interaction_statistics }}
+                </p>
+            </p-card>
+
+            <p-card header="Students At Risk">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1].students_at_risk }}
+                </p>
+            </p-card>
+
+            <p-card header="Students Without Forum Participation">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1].students_without_forum_participation }}
+                </p>
+            </p-card>
+
+            <p-card header="Students With Few Resources">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1].students_with_few_resources }}
+                </p>
+            </p-card>
+
+            <p-card header="Interaction Time Prediction">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1].interaction_time_prediction }}
+                </p>
+            </p-card>
+
+            <p-card header="Interaction Clusters">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1].interaction_clusters }}
+                </p>
+            </p-card>
+
+            <p-card header="Interaction Risk Prediction">
+                <p class="text-sm leading-relaxed text-justify">
+                    {{ analysisResult[1].interaction_risk_prediction }}
+                </p>
+            </p-card>
+
+        </div>
+    </p-tabPanel>
+
+
+    <p-tabPanel header="JSON Response">
+        <p-card header="JSON obtained from the analysis performed">
+            <pre style="font-size: 1rem; padding: 1rem; border-radius: 0.5rem; max-height: 300px; overflow: auto;">
+                {{ analysisResult | json }}
+            </pre>
+        </p-card>
+    </p-tabPanel>
+</p-tabView>

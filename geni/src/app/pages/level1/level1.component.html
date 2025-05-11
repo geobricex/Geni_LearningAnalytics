@@ -207,51 +207,37 @@
         </div>
 
         <!-- Gráficos principales -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <p-card header="Grade Distribution" class="custom-card">
-        <ngx-charts-bar-vertical 
-            [results]="gradeDistributionChart" 
-            [xAxis]="true" 
-            [yAxis]="true"
-            [legend]="false" 
-            [showXAxisLabel]="true" 
-            [showYAxisLabel]="true" 
-            xAxisLabel="Score Interval"
-            yAxisLabel="Number of Students"
-            [scheme]="chartColorScheme"
-            [animations]="true">
-        </ngx-charts-bar-vertical>
-    </p-card>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <p-card header="Grade Distribution" class="custom-card">
+                <ngx-charts-line-chart [results]="gradeDistributionChart" [xAxis]="true" [yAxis]="true" [legend]="false"
+                    [showXAxisLabel]="true" [showYAxisLabel]="true" xAxisLabel="Score Interval"
+                    yAxisLabel="Number of Students" [scheme]="chartColorScheme" [animations]="true">
+                </ngx-charts-line-chart>
+            </p-card>
 
-    <p-card header="Activity Type Participation" class="custom-card">
-        <ngx-charts-pie-chart 
-            [results]="activityTypeChart" 
-            [legend]="true" 
-            [labels]="true"
-            [scheme]="chartColorScheme"
-            [legendTitle]="'Activity Types'"
-            [doughnut]="false"
-            [animations]="true">
-        </ngx-charts-pie-chart>
-    </p-card>
-    
-    <p-card header="Word Cloud of Observations">
-        <div class="word-cloud">
-            <span *ngFor="let word of wordCloudData" 
-                [ngStyle]="{ 
+            <p-card header="Activity Type Participation" class="custom-card">
+                <ngx-charts-area-chart [results]="activityTypeChart" [xAxis]="true" [yAxis]="true" [legend]="true"
+                    [showXAxisLabel]="true" [showYAxisLabel]="true" xAxisLabel="Activity Type"
+                    yAxisLabel="Number of Activities" [scheme]="chartColorScheme" [animations]="true">
+                </ngx-charts-area-chart>
+            </p-card>
+
+            <p-card header="Word Cloud of Observations">
+                <div class="word-cloud">
+                    <span *ngFor="let word of wordCloudData; trackBy: trackByName" [ngStyle]="{ 
                   'font-size': getFontSize(word.value), 
-                  'color': getRandomColor(),
+                  'color': word.color,
                   'text-shadow': '2px 2px 3px rgba(128, 128, 128, 0.5)' 
-                }" 
-                [title]="word.value + ' occurrences'">
-                {{ word.name }}
-            </span>
+                }" [title]="word.value + ' occurrences'">
+                        {{ word.name }}
+                    </span>
+                </div>
+
+            </p-card>
         </div>
-    </p-card>
-</div>
-            
-            
-            
+
+
+
 
 
     </p-tabPanel>
@@ -363,7 +349,7 @@
     </p-tabPanel>
 
     <p-tabPanel header="JSON Response">
-   
+
         <p-card header="JSON obtained from the analysis performed">
             <pre style="font-size: 1rem; padding: 1rem; border-radius: 0.5rem; max-height: 300px; overflow: auto;">
                 {{ analysisResult | json }}

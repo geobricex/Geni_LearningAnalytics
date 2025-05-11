@@ -43,11 +43,6 @@ export class AppMenu {
                         label: 'Level 3 - socioeconomic',
                         icon: 'pi pi-fw pi-users', // 'pi pi-fw pi-briefcase'
                         routerLink: ['/pages/level3']
-                    },
-                    {
-                        label: 'Level 4- engagement',
-                        icon: 'pi pi-fw pi-chart-line', // o pi pi-fw pi-bolt
-                        routerLink: ['/pages/level4']
                     }
                 ]
             },

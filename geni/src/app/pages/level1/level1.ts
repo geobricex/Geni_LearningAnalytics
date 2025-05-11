@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Renderer2, Inject } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Renderer2, Inject, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
@@ -13,6 +13,7 @@ import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-level1',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, TableModule, CardModule, TabViewModule, ButtonModule,
     DialogModule, DynamicDialogModule, HttpClientModule, NgxChartsModule],
   templateUrl: './level1.component.html',
@@ -24,14 +25,17 @@ export class Level1 implements OnInit {
   constructor(
     private http: HttpClient,
     private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private cdr: ChangeDetectorRef
+
   ) { }
 
   showDialog: boolean = false;
   selectedStudent: any = null;
   rawData: any[] = [];
-  rawDataXML: string = '';  
+  rawDataXML: string = '';
   analysisResult: any[] = [];
+
   flattenedData: any[] = [];
   excelData: any[] = [];
   wordCloudData: WordData[] = [];
@@ -41,14 +45,18 @@ export class Level1 implements OnInit {
   chartColorScheme: any = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
-  
+
   ngOnInit(): void {
     // Actualizar configuración de tema para las gráficas
     this.setupChartTheme();
-    
+
     // Escuchar cambios de tema
     this.listenForThemeChanges();
-    
+
+    this.loadStudentsData();
+  }
+
+  loadStudentsData(): void {
     this.http.get<any[]>('assets/data/json/level1.json').subscribe((data) => {
       this.rawData = data;
 
@@ -74,7 +82,7 @@ export class Level1 implements OnInit {
   // Configura el tema para las gráficas basado en el tema actual
   setupChartTheme() {
     const isDarkTheme = this.document.documentElement.classList.contains('dark-theme');
-    
+
     // Configuración de colores para textos y ejes
     this.chartTheme = {
       axisLabelColor: isDarkTheme ? 'white' : 'black',
@@ -82,14 +90,14 @@ export class Level1 implements OnInit {
       gridLineColor: isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
     };
   }
-  
+
   // Escucha cambios de tema en la aplicación
   listenForThemeChanges() {
     // Observer para detectar cambios en las clases del documento
     const observer = new MutationObserver(() => {
       this.setupChartTheme();
     });
-    
+
     // Observar cambios en la clase del elemento raíz (donde se agrega/quita 'dark-theme')
     observer.observe(this.document.documentElement, {
       attributes: true,
@@ -179,15 +187,25 @@ export class Level1 implements OnInit {
 
   private buildDashboardCharts() {
     const distribution = this.analysisResult[0]?.global_statistics?.distribution_by_intervals || {};
-    this.gradeDistributionChart = Object.entries(distribution).map(([interval, count]) => ({
-      name: interval,
-      value: count
-    }));
+    this.gradeDistributionChart = [
+      {
+        "name": "Grade Distribution",
+        "series": Object.entries(distribution).map(([interval, count]) => ({
+          "name": interval,
+          "value": count
+        }))
+      }
+    ];
 
     const activityTypes = this.analysisResult[0]?.global_statistics?.distribution_by_activity_type || {};
     this.activityTypeChart = Object.entries(activityTypes).map(([type, count]) => ({
-      name: type,
-      value: count
+      "name": type,
+      "series": [
+        {
+          "name": type,
+          "value": count
+        }
+      ]
     }));
 
     const studentsTiming = this.analysisResult[0]?.global_statistics?.submission_timing || {};
@@ -234,31 +252,29 @@ export class Level1 implements OnInit {
   stopWordsSpanish = [
     'el', 'la', 'los', 'las', 'de', 'y', 'a', 'que', 'en', 'con', 'por', 'para', 'una', 'un', 'se', 'al', 'del', 'como', 'es', 'no', 'si', 'muy', 'sobre', 'este', 'esta'
   ];
-  
+
   stopWordsEnglish = [
     'the', 'and', 'to', 'a', 'in', 'of', 'is', 'it', 'with', 'for', 'on', 'that', 'as', 'at', 'by', 'an', 'this', 'be', 'are', 'was', 'were', 'not'
   ];
-  
+
+  // Mapa para almacenar los colores generados una sola vez
+  private colorMap: { [key: string]: string } = {};
+
   private prepareWordCloudData() {
     const allObservations = this.rawData
       .flatMap(student => student.activities)
-      .map(activity => {
-        if (activity && activity.observation) {
-          return activity.observation;
-        }
-        return '';
-      })
+      .map(activity => activity?.observation || '')
       .filter(observation => observation);
-  
+
     const filteredObservations = allObservations.map(observation => {
       const words = observation.split(/\s+/);
       return words.filter((word: string) => {
         return !this.stopWordsSpanish.includes(word.toLowerCase()) && !this.stopWordsEnglish.includes(word.toLowerCase());
       }).join(' ');
     }).filter(observation => observation);
-  
+
     const wordCount: { [key: string]: number } = {};
-  
+
     filteredObservations.forEach(observation => {
       const words = observation.split(/\s+/);
       words.forEach((word: string) => {
@@ -266,27 +282,31 @@ export class Level1 implements OnInit {
         wordCount[word] = (wordCount[word] || 0) + 1;
       });
     });
-  
-    let wordCloudArray = Object.entries(wordCount).map(([word, count]) => ({
-      name: word,
-      value: count
-    }));
-  
+
+    let wordCloudArray = Object.entries(wordCount).map(([word, count]) => {
+      if (!this.colorMap[word]) {
+        this.colorMap[word] = this.getRandomColor();  // Genera el color solo si no existe
+      }
+      return {
+        name: word,
+        value: count,
+        color: this.colorMap[word]
+      };
+    });
+
     wordCloudArray = wordCloudArray
       .sort((a, b) => b.value - a.value)
       .slice(0, 20);
-  
-    this.wordCloudData = wordCloudArray;
-  } 
 
-  getFontSize(frequency: number): string {
-    const maxFrequency = Math.max(...this.wordCloudData.map((word: WordData) => word.value));
-    const minFontSize = 7;
-    const maxFontSize = 40;
-    const fontSize = minFontSize + ((frequency / maxFrequency) * (maxFontSize - minFontSize));
-    return `${fontSize}px`;
+    this.wordCloudData = wordCloudArray;
+
+    // Marcar el componente como actualizado para evitar cambios innecesarios
+    this.cdr.markForCheck();
   }
-  
+  trackByName(index: number, word: WordData): string {
+    return word.name;
+  }
+
   getRandomColor(): string {
     const letters = '0123456789ABCDEF';
     let color = '#';
@@ -296,10 +316,18 @@ export class Level1 implements OnInit {
     return color;
   }
 
+  getFontSize(frequency: number): string {
+    const maxFrequency = Math.max(...this.wordCloudData.map((word: WordData) => word.value));
+    const minFontSize = 7;
+    const maxFontSize = 40;
+    const fontSize = minFontSize + ((frequency / maxFrequency) * (maxFontSize - minFontSize));
+    return `${fontSize}px`;
+  }
 
 }
 
 interface WordData {
-  name: string;  
-  value: number; 
+  name: string;
+  value: number;
+  color: string;
 }

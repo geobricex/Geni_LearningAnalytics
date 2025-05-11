@@ -1,4 +1,235 @@
-<div class="card">
-    <div class="font-semibold text-xl mb-4">Empty Page - 3</div>
-    <p>Use this page to start from scratch and place your custom content.</p>
-</div>
+<p-tabView>
+    <!-- Tab: Socioeconomic Data Overview -->
+    <p-tabPanel header="Socioeconomic Data Overview">
+        <p-card header="Student Socioeconomic Information">
+            <p-table [value]="studentsData" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="student_name">Name</th>
+                        <th pSortableColumn="age">Age</th>
+                        <th pSortableColumn="gender">Gender</th>
+                        <th pSortableColumn="socioeconomic_level">Socioeconomic Level</th>
+                        <th pSortableColumn="family_income_monthly">Family Income (Monthly)</th>
+                        <th pSortableColumn="employment_status">Employment Status</th>
+                        <th pSortableColumn="device_type">Device Type</th>
+                        <th pSortableColumn="has_internet_access">Internet Access</th>
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-student>
+                    <tr>
+                        <td>{{ student.student_name }}</td>
+                        <td>{{ student.age }}</td>
+                        <td>{{ student.gender }}</td>
+                        <td>{{ student.socioeconomic_level }}</td>
+                        <td>{{ student.family_income_monthly | currency:'USD' }}</td>
+                        <td>{{ student.employment_status }}</td>
+                        <td>{{ student.device_type }}</td>
+                        <td>{{ student.has_internet_access ? 'Yes' : 'No' }}</td>
+                        <td>
+                            <button pButton type="button" icon="pi pi-eye" label="View" (click)="openDetail(student)"
+                                class="p-button-sm"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+    </p-tabPanel>
+
+    <!-- Dialog: Student Details -->
+    <p-dialog header="Student Details" [(visible)]="showDialog" modal="true" [style]="{ width: '50vw' }">
+        <div *ngIf="selectedStudent">
+            <h3>{{ selectedStudent.student_name }}</h3>
+            <p>Age: {{ selectedStudent.age }}</p>
+            <p>Gender: {{ selectedStudent.gender }}</p>
+            <p>Socioeconomic Level: {{ selectedStudent.socioeconomic_level }}</p>
+            <p>Family Income: {{ selectedStudent.family_income_monthly | currency:'USD' }}</p>
+            <p>Employment Status: {{ selectedStudent.employment_status }}</p>
+            <p>Device Type: {{ selectedStudent.device_type }}</p>
+            <p>Internet Access: {{ selectedStudent.has_internet_access ? 'Yes' : 'No' }}</p>
+            <p>Commute Time: {{ selectedStudent.commute_time_minutes }} minutes</p>
+        </div>
+    </p-dialog>
+</p-tabView>
+
+<p-tabView class="mt-5">
+    <p-tabPanel header="JSON Format">
+        <p-card header="Raw JSON used for analysis">
+            <pre style="font-size: 0.75rem; padding: 1rem; border-radius: 0.5rem; max-height: 300px; overflow: auto;">
+                {{ studentsData | json }}
+        </pre>
+        </p-card>
+    </p-tabPanel>
+
+    <p-tabPanel header="XML Format">
+        <p-card header="Raw XML used for analysis">
+            <pre style="font-size: 0.75rem; padding: 1rem; border-radius: 0.5rem; max-height: 300px; overflow: auto;">
+                {{ rawDataXML }}
+            </pre>
+        </p-card>
+    </p-tabPanel>
+
+</p-tabView>
+
+<p-button label="Analyze Level 3" icon="pi pi-chart-line" (click)="analyzeLevel3()" class="p-button-success mt-3"></p-button>
+
+<p-tabView class="mt-5" *ngIf="analysisResult.length > 0">
+    <p-tabPanel header="General Statistics">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+            <p-card header="Overall Average Income">
+                <span class="font-bold text-lg">{{ analysisResult[0].overall_average_income | currency:'USD' }}</span>
+            </p-card>
+            <p-card header="Average Income per Capita">
+                <span class="font-bold text-lg">{{ analysisResult[0].overall_average_income_per_capita | currency:'USD' }}</span>
+            </p-card>
+            <p-card header="Average Age">
+                <span class="font-bold text-lg">{{ analysisResult[0].overall_average_age }}</span>
+            </p-card>
+            <p-card header="Average Commute Time (minutes)">
+                <span class="font-bold text-lg">{{ analysisResult[0].overall_average_commute_time }}</span>
+            </p-card>
+            <p-card header="Average Housing Density">
+                <span class="font-bold text-lg">{{ analysisResult[0].overall_average_housing_density }}</span>
+            </p-card>
+            <p-card header="Average Connection Time (minutes)">
+                <span class="font-bold text-lg">{{ analysisResult[0].overall_average_connection_time }}</span>
+            </p-card>
+
+<!-- 
+            <p-card header="Income vs Average Grade">
+                <span class="font-bold text-lg">{{ analysisResult[0].correlations.income_vs_average_grade }}</span>
+            </p-card>
+            <p-card header="Dependents vs Average Grade:">
+                <span class="font-bold text-lg">{{ analysisResult[0].correlations.dependents_vs_average_grade }}</span>
+            </p-card>
+            <p-card header="Housing Density vs Average Grade">
+                <span class="font-bold text-lg">{{ analysisResult[0].correlations.housing_density_vs_average_grade }}</span>
+            </p-card>
+            <p-card header="Commute Time vs Average Grade">
+                <span class="font-bold text-lg">{{ analysisResult[0].correlations.commute_time_vs_average_grade }}</span>
+            </p-card>
+            <p-card header="Connection Time vs Average Grade">
+                <span class="font-bold text-lg">{{ analysisResult[0].correlations.connection_time_vs_average_grade }}</span>
+            </p-card> -->
+        </div>
+
+    </p-tabPanel>
+<p-tabPanel header="Correlation Analysis">
+    <p-card header="Correlations between Variables">
+        <ngx-charts-bar-horizontal *ngIf="correlationChart.length > 0"
+                                   [results]="correlationChart"
+                                   [xAxis]="true" [yAxis]="true" 
+                                   [legend]="false" [showXAxisLabel]="true" [showYAxisLabel]="true"
+                                   xAxisLabel="Correlation" yAxisLabel="Variable Pairs"
+                                   [scheme]="chartColorScheme" [animations]="true">
+        </ngx-charts-bar-horizontal>
+        <p *ngIf="correlationChart.length === 0">No data available for Correlation Analysis.</p>
+    </p-card>
+</p-tabPanel>
+
+    <p-tabPanel header="Student Performance">
+        <p-card header="Detailed Student Performance">
+            <p-table [value]="studentPerformanceData" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Student</th>
+                        <th>Average Grade</th>
+                        <th>Income per Capita</th>
+                        <th>Employment Status</th>
+                        <th>Risk Label</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-student>
+                    <tr>
+                        <td>{{ student.student_name }}</td>
+                        <td>{{ student.average_grade }}</td>
+                        <td>{{ student.income_per_capita | currency:'USD' }}</td>
+                        <td>{{ student.employment_status }}</td>
+                        <td>{{ student.risk_label }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+    </p-tabPanel>
+
+    <p-tabPanel header="Cluster Information">
+        <p-card header="Clusters Overview">
+            <p-table [value]="clusterData" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Cluster ID</th>
+                        <th>Total Students</th>
+                        <th>Average Grade</th>
+                        <th>Average Income</th>
+                        <th>Students</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-cluster>
+                    <tr>
+                        <td>{{ cluster.cluster_id }}</td>
+                        <td>{{ cluster.total_students }}</td>
+                        <td>{{ cluster.average_grade }}</td>
+                        <td>{{ cluster.average_income | currency:'USD' }}</td>
+                        <td>
+                            <ul>
+                                <li *ngFor="let student of cluster.students">{{ student.student_name }}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+    </p-tabPanel>
+
+    <p-tabPanel header="Prediction Results">
+        <p-card header="Predicted Grades">
+            <p-table [value]="predictionData" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Student</th>
+                        <th>Predicted Grade</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-prediction>
+                    <tr>
+                        <td>{{ prediction.student_name }}</td>
+                        <td>{{ prediction.predicted_grade }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+    </p-tabPanel>
+
+    <p-tabPanel header="Risk Classification">
+        <p-card header="Risk Prediction Metrics">
+            <p>Accuracy: {{ riskData.accuracy }}</p>
+            <p>Precision: {{ riskData.precision }}</p>
+            <p>Recall: {{ riskData.recall }}</p>
+            <p>F1 Score: {{ riskData.f1_score }}</p>
+        </p-card>
+        <p-card header="Students at Risk">
+            <p-table [value]="riskData.students_predictions" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Student</th>
+                        <th>Predicted Risk</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-risk>
+                    <tr>
+                        <td>{{ risk.student_name }}</td>
+                        <td>{{ risk.predicted_risk }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+    </p-tabPanel>
+
+    <p-tabPanel header="JSON Response">
+        <p-card header="Raw JSON Data">
+            <pre style="font-size: 0.75rem; padding: 1rem; border-radius: 0.5rem; max-height: 300px; overflow: auto;">
+                {{ analysisResult | json }}
+            </pre>
+        </p-card>
+    </p-tabPanel>
+</p-tabView>
