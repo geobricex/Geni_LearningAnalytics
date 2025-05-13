@@ -30,8 +30,8 @@ import {
   ɵɵdefineNgModule,
   ɵɵinject
 } from "./chunk-7AAXF3AN.js";
-import "./chunk-AFUZPXFM.js";
 import "./chunk-CGBIJRYX.js";
+import "./chunk-AFUZPXFM.js";
 import "./chunk-DGVHA3AU.js";
 import "./chunk-WDMUDEB6.js";
 

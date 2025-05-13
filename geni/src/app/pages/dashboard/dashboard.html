@@ -1,0 +1,138 @@
+<div class="p-fluid p-grid dashboard-container" style="margin-top: -3rem;">
+    <!-- Encabezado Principal -->
+    <div class="p-col-12" style="margin-bottom: 1rem;">
+        <p-card styleClass="card-with-logo">
+            <div class="header-content">
+                <img src="/assets/img/buho.svg" alt="Logo" width="100px" height="100px" class="logo" />
+                <div class="text-content">
+                    <h2>Geni - Generative Educational Network Insights</h2>
+                    <p>A cloud-based data analytics service for higher education.</p>
+                    <p>Geni leverages cloud computing and AI to empower educational institutions with data-driven
+                        insights for better decision-making.</p>
+                    <p-button label="Explore Levels" icon="pi pi-arrow-right"
+                        class="p-button-raised p-button-success explore-btn" (click)="showLevels()"></p-button>
+                </div>
+            </div>
+        </p-card>
+    </div>
+
+
+    <!-- Niveles de Análisis -->
+    <div class="p-col-12 levels" *ngIf="showingLevels" style="margin-bottom: 1rem;">
+        <div class="p-col-12 p-md-4 animated fadeInUp" *ngFor="let level of levels">
+            <p-card [header]="level.title" styleClass="level-card uniform-size">
+                <div class="level-content">
+                    <i [class]="level.icon" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                    <p>{{ level.description }}</p>
+                </div>
+            </p-card>
+        </div>
+    </div>
+
+    <!-- Sección de Características Claves y Beneficios -->
+    <div class="p-col-12 p-md-6" style="margin-bottom: 1rem;">
+        <p-card header="Key Features" styleClass="feature-card">
+            <p-carousel [value]="features" [numVisible]="1" [numScroll]="1" class="feature-carousel">
+                <ng-template pTemplate="item" let-feature>
+                    <div class="feature-item">
+                        <i [class]="feature.icon" style="font-size: 2rem;"></i>
+                        <p>{{ feature.title }}</p>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </p-card>
+    </div>
+
+
+    <!-- Área de Video Instructivo -->
+    <div class="p-col-12 p-md-6" style="margin-bottom: 1rem;">
+
+        <p-tabView class="mt-5">
+            <p-tabPanel header="en">
+                <p-card header="Instructional Video" styleClass="video-card">
+                    <video controls style="width: 80%; max-height: 300px;">
+                        <source src="/assets/videos/instruction.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </p-card>
+
+            </p-tabPanel>
+
+            <p-tabPanel header="es">
+                <p-card header="Instructional Video" styleClass="video-card">
+                    <video controls style="width: 80%; max-height: 300px;">
+                        <source src="/assets/videos/instruction.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </p-card>
+
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </div>
+
+    <!-- Área de Noticias y Actualizaciones -->
+    <!-- Área de Noticias y Actualizaciones -->
+    <div class="p-col-12" style="margin-bottom: 1rem;">
+        <p-card header="Latest News and Updates" styleClass="news-panel">
+            <p-accordion [activeIndex]="0" class="news-accordion">
+                <p-accordionTab header="Version 1.0 Released - Explore new features" [selected]="true">
+                    <div class="news-item">
+                        <i class="pi pi-bell" style="font-size: 1.5rem; margin-right: 0.5rem;"></i>
+                        <p>Released on: January 15, 2025</p>
+                        <p>Discover the latest improvements and features added to Geni, enhancing your data analytics
+                            experience.</p>
+                    </div>
+                </p-accordionTab>
+                <p-accordionTab header="Integration with OpenAI models for better insights">
+                    <div class="news-item">
+                        <i class="pi pi-bolt" style="font-size: 1.5rem; margin-right: 0.5rem;"></i>
+                        <p>Released on: February 20, 2025</p>
+                        <p>Integrate cutting-edge AI models from OpenAI to improve educational data interpretation.</p>
+                    </div>
+                </p-accordionTab>
+                <p-accordionTab header="Upcoming Webinar: Data-Driven Decisions in Education">
+                    <div class="news-item">
+                        <i class="pi pi-calendar" style="font-size: 1.5rem; margin-right: 0.5rem;"></i>
+                        <p>Date: March 5, 2025</p>
+                        <p>Join us for a live session to learn how to leverage Geni for making data-driven educational
+                            decisions.</p>
+                    </div>
+                </p-accordionTab>
+            </p-accordion>
+        </p-card>
+    </div>
+
+    <!-- Footer -->
+    <footer class="p-col-12 footer" style="margin-top: 1rem;">
+        <div class="footer-content">
+
+            <div class="footer-column">
+                <h4>Based on</h4>
+                <p>Research Project:</p>
+                <p>"Web service based on cloud data analytics for Higher Education Institutions"</p>
+                <p>By Ing. Geovanny Brito Casanova</p>
+                <p>
+                    <i class="pi pi-linkedin" style="margin-right: 0.5rem;"></i>
+                    <a href="https://www.linkedin.com/in/geovannybricex/" target="_blank">geovannybricex</a>
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Institution</h4>
+                <p>Technical State University of Quevedo</p>
+                <p>Faculty of Graduate Studies</p>
+                <p>Master's in Data Science</p>
+                <p>© 2025</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Developed by</h4>
+                <p>CleanCode S.A.S</p>
+                <p>Quevedo - Ecuador</p>
+            </div>
+        </div>
+    </footer>
+
+</div>

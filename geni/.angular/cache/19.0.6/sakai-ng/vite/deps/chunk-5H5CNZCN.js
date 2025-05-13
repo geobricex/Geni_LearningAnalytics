@@ -275,10 +275,14 @@ function ZIndexUtils() {
   };
 }
 var zindexutils = ZIndexUtils();
+var transformToBoolean = (value) => {
+  return !!value;
+};
 
 export {
   ObjectUtils,
   UniqueComponentId,
-  zindexutils
+  zindexutils,
+  transformToBoolean
 };
-//# sourceMappingURL=chunk-NMOYQVAO.js.map
+//# sourceMappingURL=chunk-5H5CNZCN.js.map
