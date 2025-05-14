@@ -1,0 +1,17 @@
+# Ignorar archivos binarios y ejecutables grandes
+*.exe
+
+# Ignorar archivos específicos de Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.log
+
+# Ignorar archivos de proveedores de Terraform descargados
+terraform-provider-aws_*.exe
+terraform-provider-aws_v*.exe
+
+# Ignorar archivos de caché
+*.bak
+*.tmp
+*.swp

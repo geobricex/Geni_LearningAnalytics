@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { environment } from '../../../environments/environment';
 
 interface Student {
   student_id: string;
@@ -131,6 +132,8 @@ export class Level3 implements OnInit {
   gradeDistributionChart: any[] = [];
   chartColorScheme = 'cool';
   correlationChart: any[] = [];
+  private apiUrl = environment.apiUrl;
+  private production = environment.production;
 
   constructor(private http: HttpClient) {}
 
@@ -153,12 +156,29 @@ export class Level3 implements OnInit {
   }
 
 analyzeLevel3() {
+
+ if (this.production) {
+    this.http.post<AnalysisResult[]>(`${this.apiUrl}/level3/`, this.studentsData).subscribe({
+      next: (res) => {
+        this.analysisResult = res;
+                   if (this.analysisResult.length > 0) {
+                    const data = res[0];
+                    this.processPerformanceData(data);
+                    this.processClusterData(data);
+                    this.processPredictionData(data);
+                    this.processRiskData(data);
+                    this.prepareCharts(data);
+                } else {
+                    console.warn('No valid data for analysis.');
+                }
+      },
+      error: (err) => console.error('❌ Error al llamar a la API de Nivel 2:', err)
+    });
+    } else {
     setTimeout(() => {
         this.http.get<AnalysisResult[]>('assets/data/response/level3-response.json').subscribe({
             next: (mock) => {
                 this.analysisResult = mock;
-                console.log('✅ Level 3 analysis loaded:', this.analysisResult);
-
                 if (this.analysisResult.length > 0) {
                     const data = mock[0];
                     this.processPerformanceData(data);
@@ -173,16 +193,8 @@ analyzeLevel3() {
             error: (err) => console.error('❌ Failed to load Level 3 data:', err)
         });
     }, 2000);
+    }
 
-    // this.http.post<AnalysisResult[]>('http://localhost:8000/api/level3/', this.rawData).subscribe({
-    //   next: (res) => {
-    //     this.analysisResult = res;
-    //     this.processPerformanceData(res[0]);
-    //     this.prepareCharts(res[0]);
-    //     console.log('✅ Análisis de Nivel 2 obtenido desde la API.');
-    //   },
-    //   error: (err) => console.error('❌ Error al llamar a la API de Nivel 2:', err)
-    // });
   }
 
 processPerformanceData(data: AnalysisResult): void {

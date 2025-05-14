@@ -1,0 +1,130 @@
+[
+  {
+    "student_id": "A202501",
+    "student_name": "Jeniffer López Aguiar",
+    "course_id": "INF101",
+    "course_name": "Fundamentos de Programación",
+    "accesses_last_7_days": 6,
+    "total_connection_time_minutes": 320,
+    "resources_visited": 15,
+    "forum_posts": 3,
+    "activities": [
+      {
+        "activity_id": "ACT01",
+        "type": "quiz",
+        "title": "Quiz 1: Tipos de Datos",
+        "grade": 9.5,
+        "max_grade": 10,
+        "submission_date": "2025-04-01T14:00:00Z",
+        "submission_final_date": "2025-04-02T14:00:00Z",
+        "observation": "Dominio claro del tema"
+      },
+      {
+        "activity_id": "ACT02",
+        "type": "forum",
+        "title": "Foro: Algoritmos vs Heurísticas",
+        "grade": 8.0,
+        "max_grade": 10,
+        "submission_date": "2025-04-05T18:00:00Z",
+        "submission_final_date": "2025-04-10T18:00:00Z",
+        "observation": "Participación adecuada"
+      }
+    ]
+  },
+  {
+    "student_id": "A202502",
+    "student_name": "Luis Rosado Angueta",
+    "course_id": "INF101",
+    "course_name": "Fundamentos de Programación",
+    "accesses_last_7_days": 3,
+    "total_connection_time_minutes": 180,
+    "resources_visited": 8,
+    "forum_posts": 1,
+    "activities": [
+      {
+        "activity_id": "ACT01",
+        "type": "quiz",
+        "title": "Quiz 1: Tipos de Datos",
+        "grade": 7.0,
+        "max_grade": 10,
+        "submission_date": "2025-04-01T15:30:00Z",
+        "submission_final_date": "2025-04-02T14:00:00Z",
+        "observation": "Necesita reforzar conceptos básicos"
+      },
+      {
+        "activity_id": "ACT02",
+        "type": "forum",
+        "title": "Foro: Algoritmos vs Heurísticas",
+        "grade": 7.5,
+        "max_grade": 10,
+        "submission_date": "2025-04-05T19:00:00Z",
+        "submission_final_date": "2025-04-10T18:00:00Z",
+        "observation": "Participación mínima"
+      }
+    ]
+  },
+  {
+    "student_id": "A202503",
+    "student_name": "Nara Boza Arzube",
+    "course_id": "INF101",
+    "course_name": "Fundamentos de Programación",
+    "accesses_last_7_days": 7,
+    "total_connection_time_minutes": 410,
+    "resources_visited": 20,
+    "forum_posts": 5,
+    "activities": [
+      {
+        "activity_id": "ACT01",
+        "type": "quiz",
+        "title": "Quiz 1: Tipos de Datos",
+        "grade": 10.0,
+        "max_grade": 10,
+        "submission_date": "2025-04-01T13:45:00Z",
+        "submission_final_date": "2025-04-02T14:00:00Z",
+        "observation": "Excelente desempeño"
+      },
+      {
+        "activity_id": "ACT02",
+        "type": "forum",
+        "title": "Foro: Algoritmos vs Heurísticas",
+        "grade": 9.5,
+        "max_grade": 10,
+        "submission_date": "2025-04-05T18:45:00Z",
+        "submission_final_date": "2025-04-10T18:00:00Z",
+        "observation": "Argumentos sólidos y reflexivos"
+      }
+    ]
+  },
+  {
+    "student_id": "A202504",
+    "student_name": "Juan Carlos Caviedes",
+    "course_id": "INF101",
+    "course_name": "Fundamentos de Programación",
+    "accesses_last_7_days": 2,
+    "total_connection_time_minutes": 95,
+    "resources_visited": 4,
+    "forum_posts": 0,
+    "activities": [
+      {
+        "activity_id": "ACT01",
+        "type": "quiz",
+        "title": "Quiz 1: Tipos de Datos",
+        "grade": 6.0,
+        "max_grade": 10,
+        "submission_date": "2025-04-01T16:10:00Z",
+        "submission_final_date": "2025-04-02T14:00:00Z",
+        "observation": "Bajo rendimiento, revisar contenidos"
+      },
+      {
+        "activity_id": "ACT02",
+        "type": "forum",
+        "title": "Foro: Algoritmos vs Heurísticas",
+        "grade": 6.5,
+        "max_grade": 10,
+        "submission_date": "2025-04-05T20:15:00Z",
+        "submission_final_date": "2025-04-10T18:00:00Z",
+        "observation": "Poca profundidad en la participación"
+      }
+    ]
+  }
+]

@@ -1,4 +1,4 @@
-import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
@@ -8,7 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
+import { environment } from '../../../environments/environment';
 
 interface Student {
   student_id: string;
@@ -92,58 +92,62 @@ interface AnalysisResult {
   imports: [CommonModule, TableModule, CardModule, TabViewModule, ButtonModule, HttpClientModule, DialogModule, NgxChartsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
-}) 
+})
 
 export class Level2 implements OnInit {
   studentsData: Student[] = [];
   groupedData: any[] = [];
   selectedStudent: Student | null = null;
   showDialog: boolean = false;
-  rawDataXML: string = '';  
+  rawDataXML: string = '';
   analysisResult: AnalysisResult[] = [];
   studentPerformanceData: StudentPerformance[] = [];
   accessDistributionChart: any[] = [];
   activityParticipationChart: any[] = [];
   chartColorScheme = 'cool';  // Puedes elegir entre 'vivid', 'natural', 'cool', etc.
+  private apiUrl = environment.apiUrl;
+  private production = environment.production;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.loadStudentsData();
   }
 
   analyzeLevel2() {
-    setTimeout(() => {
-        this.http.get<AnalysisResult[]>('assets/data/response/level2-response.json').subscribe({
-            next: (mock) => {
-                this.analysisResult = mock;
-                console.log('✅ Análisis de Nivel 2 cargado con éxito:', this.analysisResult);
 
-                // Validar que los datos están correctamente estructurados
+    if (this.production) {
+      this.http.post<AnalysisResult[]>(`${this.apiUrl}/level2/`, this.studentsData).subscribe({
+        next: (res) => {
+          this.analysisResult = res;
                 if (this.analysisResult.length > 0) {
-                    this.processPerformanceData(mock[0]);
-                    this.prepareCharts(mock[0]);
-                } else {
-                    console.warn('El análisis no contiene datos válidos.');
-                }
-            },
-            error: (err) => console.error('❌ No se pudo cargar la respuesta simulada:', err)
+              this.processPerformanceData(res[0]);
+              this.prepareCharts(res[0]);
+            } else {
+              console.warn('El análisis no contiene datos válidos.');
+            }
+        },
+        error: (err) => console.error('❌ Error al llamar a la API de Nivel 2:', err)
+      });
+    } else {
+      setTimeout(() => {
+        this.http.get<AnalysisResult[]>('assets/data/response/level2-response.json').subscribe({
+          next: (mock) => {
+            this.analysisResult = mock;
+            if (this.analysisResult.length > 0) {
+              this.processPerformanceData(mock[0]);
+              this.prepareCharts(mock[0]);
+            } else {
+              console.warn('El análisis no contiene datos válidos.');
+            }
+          },
+          error: (err) => console.error('❌ No se pudo cargar la respuesta simulada:', err)
         });
-    }, 2000);
+      }, 2000);
+    }
 
-  
-    // Ruta real para la API (comentar/descomentar según el entorno)
-    // this.http.post<AnalysisResult[]>('http://localhost:8000/api/level2/', this.rawData).subscribe({
-    //   next: (res) => {
-    //     this.analysisResult = res;
-    //     this.processPerformanceData(res[0]);
-    //     this.prepareCharts(res[0]);
-    //     console.log('✅ Análisis de Nivel 2 obtenido desde la API.');
-    //   },
-    //   error: (err) => console.error('❌ Error al llamar a la API de Nivel 2:', err)
-    // });
   }
-  
+
   loadStudentsData(): void {
     this.http.get<Student[]>('assets/data/json/level2.json').subscribe(data => {
       this.studentsData = data;
@@ -169,33 +173,33 @@ export class Level2 implements OnInit {
       }))
     );
   }
-  
+
   prepareCharts(data: AnalysisResult): void {
     console.log('Preparando gráficos con datos:', data);
 
     // Verificar si el objeto "interaction_clusters" está definido
     if (data.interaction_clusters) {
-        this.accessDistributionChart = [
-            { name: 'Low Access', value: data.interaction_clusters['Cluster 0']?.total_students || 0 },
-            { name: 'Medium Access', value: data.interaction_clusters['Cluster 2']?.total_students || 0 },
-            { name: 'High Access', value: data.interaction_clusters['Cluster 1']?.total_students || 0 }
-        ];
-        console.log('Datos para gráfico de acceso:', this.accessDistributionChart);
+      this.accessDistributionChart = [
+        { name: 'Low Access', value: data.interaction_clusters['Cluster 0']?.total_students || 0 },
+        { name: 'Medium Access', value: data.interaction_clusters['Cluster 2']?.total_students || 0 },
+        { name: 'High Access', value: data.interaction_clusters['Cluster 1']?.total_students || 0 }
+      ];
+      console.log('Datos para gráfico de acceso:', this.accessDistributionChart);
     } else {
-        console.warn('El objeto interaction_clusters no está definido en los datos.');
+      console.warn('El objeto interaction_clusters no está definido en los datos.');
     }
 
     // Verificar si "interaction_statistics" contiene los datos esperados
     if (data.interaction_statistics) {
-        this.activityParticipationChart = [
-            { name: 'Participated', value: data.interaction_statistics.average_forum_posts || 0 },
-            { name: 'Not Participated', value: (data.interaction_statistics.average_forum_posts || 0) * 0.5 }
-        ];
-        console.log('Datos para gráfico de participación:', this.activityParticipationChart);
+      this.activityParticipationChart = [
+        { name: 'Participated', value: data.interaction_statistics.average_forum_posts || 0 },
+        { name: 'Not Participated', value: (data.interaction_statistics.average_forum_posts || 0) * 0.5 }
+      ];
+      console.log('Datos para gráfico de participación:', this.activityParticipationChart);
     } else {
-        console.warn('El objeto interaction_statistics no está definido en los datos.');
+      console.warn('El objeto interaction_statistics no está definido en los datos.');
     }
-}
+  }
 
 
   // Procesa el rendimiento de los estudiantes

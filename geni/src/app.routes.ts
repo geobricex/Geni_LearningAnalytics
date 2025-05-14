@@ -10,6 +10,7 @@ export const appRoutes: Routes = [
         component: AppLayout,
         children: [
             { path: '', component: Dashboard },
+            { path: 'geni', component: Dashboard },
             {
                 path: 'documentation',
                 loadChildren: () => import('./app/pages/documentation/documentation.module').then(m => m.DocumentationModule)

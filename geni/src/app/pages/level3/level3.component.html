@@ -225,6 +225,48 @@
         </p-card>
     </p-tabPanel>
 
+<p-tabPanel header="AI Insights">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <p-card header="Student Details Summary">
+            <p class="text-sm leading-relaxed text-justify">
+                {{ analysisResult[1].student_details }}
+            </p>
+        </p-card>
+
+        <p-card header="Demographic Distribution">
+            <p class="text-sm leading-relaxed text-justify">
+                {{ analysisResult[1].demographic_distribution }}
+            </p>
+        </p-card>
+
+        <p-card header="Economic Status">
+            <p class="text-sm leading-relaxed text-justify">
+                {{ analysisResult[1].economic_status }}
+            </p>
+        </p-card>
+
+        <p-card header="Technology Access">
+            <p class="text-sm leading-relaxed text-justify">
+                {{ analysisResult[1].technology_access }}
+            </p>
+        </p-card>
+
+        <p-card header="Correlations Found">
+            <p class="text-sm leading-relaxed text-justify">
+                {{ analysisResult[1].correlations_found }}
+            </p>
+        </p-card>
+
+        <p-card header="Suggested Interventions">
+            <p class="text-sm leading-relaxed text-justify">
+                {{ analysisResult[1].suggested_interventions }}
+            </p>
+        </p-card>
+
+    </div>
+</p-tabPanel>
+
     <p-tabPanel header="JSON Response">
         <p-card header="Raw JSON Data">
             <pre style="font-size: 0.75rem; padding: 1rem; border-radius: 0.5rem; max-height: 300px; overflow: auto;">

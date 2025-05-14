@@ -9,6 +9,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import * as XLSX from 'xlsx';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-level1',
@@ -45,6 +46,9 @@ export class Level1 implements OnInit {
   chartColorScheme: any = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
+
+  private apiUrl = environment.apiUrl;
+  private production = environment.production;
 
   ngOnInit(): void {
     // Actualizar configuración de tema para las gráficas
@@ -111,28 +115,31 @@ export class Level1 implements OnInit {
   }
 
   analyzeLevel1() {
-    setTimeout(() => {
-      this.http.get<any[]>('assets/data/response/level1-response.json').subscribe({
-        next: (mock) => {
-          this.analysisResult = mock;
+
+    if (this.production) {
+      this.http.post<any[]>(`${this.apiUrl}/level1/`, this.rawData).subscribe({
+        next: (res) => {
+          this.analysisResult = res;
           this.buildExpandedStudentData();
           this.buildDashboardCharts();
+          //console.log(this.analysisResult);
         },
-        error: (err) => console.error('❌ Could not load mock response:', err)
+        error: (err) => {
+          console.error('❌ Error calling API:', err);
+        }
       });
-    }, 2000);
-
-    // this.http.post<any[]>('http://localhost:8000/api/level1/', this.rawData).subscribe({
-    //   next: (res) => {
-    //     this.analysisResult = res;
-    //     this.buildExpandedStudentData();
-    //     this.buildDashboardCharts();
-    //     //console.log(this.analysisResult);
-    //   },
-    //   error: (err) => {
-    //     console.error('❌ Error calling API:', err);
-    //   }
-    // });
+    } else {
+      setTimeout(() => {
+        this.http.get<any[]>('assets/data/response/level1-response.json').subscribe({
+          next: (mock) => {
+            this.analysisResult = mock;
+            this.buildExpandedStudentData();
+            this.buildDashboardCharts();
+          },
+          error: (err) => console.error('❌ Could not load mock response:', err)
+        });
+      }, 2000);
+    }
   }
 
   expandedStudentData: any[] = [];
