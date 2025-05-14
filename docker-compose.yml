@@ -25,3 +25,4 @@ services:
 networks:
   my_network:
     driver: bridge
+    name: geni_learninganalytics_my_network

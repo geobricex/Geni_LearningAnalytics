@@ -35,7 +35,12 @@ resource "aws_instance" "docker_server" {
     sudo usermod -aG docker ec2-user
     sudo chkconfig docker on
 
-    # Instalar Docker Compose v2 (método mejorado)
+    # Permitir a ec2-user usar Docker sin sudo
+    sudo groupadd docker
+    sudo usermod -aG docker ec2-user
+    sudo chown ec2-user:docker /var/run/docker.sock
+
+    # Instalar Docker Compose v2
     sudo mkdir -p /usr/local/lib/docker/cli-plugins
     sudo curl -SL https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
     sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
@@ -43,11 +48,13 @@ resource "aws_instance" "docker_server" {
     sudo ln -sf /usr/local/lib/docker/cli-plugins/docker-compose /usr/bin/docker-compose
 
     # Verificar la instalación de Docker Compose
-    sudo bash -c 'echo "Verificando Docker Compose..." >> /var/log/user-data.log'
-    sudo bash -c 'docker-compose version >> /var/log/user-data.log 2>&1 || echo "Error con docker-compose version" >> /var/log/user-data.log'
-    sudo bash -c 'ls -la /usr/local/bin/docker-compose >> /var/log/user-data.log 2>&1 || echo "No existe /usr/local/bin/docker-compose" >> /var/log/user-data.log'
-    sudo bash -c 'ls -la /usr/bin/docker-compose >> /var/log/user-data.log 2>&1 || echo "No existe /usr/bin/docker-compose" >> /var/log/user-data.log'
-    sudo bash -c 'which docker-compose >> /var/log/user-data.log 2>&1 || echo "docker-compose no está en PATH" >> /var/log/user-data.log'
+    sudo docker-compose version
+
+    # Eliminar cualquier red residual para evitar conflictos
+    existing_network=$(sudo docker network ls | grep geni_learninganalytics_my_network | awk '{print $1}')
+    if [ -n "$existing_network" ]; then
+      sudo docker network rm geni_learninganalytics_my_network
+    fi
 
     # Instalar Git
     sudo yum install git -y
@@ -57,7 +64,7 @@ resource "aws_instance" "docker_server" {
     git clone https://github.com/geobricex/Geni_LearningAnalytics.git
     cd Geni_LearningAnalytics
 
-    # Ajustar permisos
+    # Ajustar permisos para ec2-user
     sudo chown -R ec2-user:ec2-user /home/ec2-user/Geni_LearningAnalytics
 
     # Crear un archivo de configuración de Docker Compose para iniciar automáticamente
@@ -79,7 +86,7 @@ resource "aws_instance" "docker_server" {
     # Habilitar el servicio para iniciar automáticamente
     sudo systemctl daemon-reload
     sudo systemctl enable docker-compose-app.service
-    sudo systemctl start docker-compose-app.service || echo "Error al iniciar el servicio de docker-compose" >> /var/log/user-data.log
+    sudo systemctl start docker-compose-app.service
   EOF
 
   tags = {
