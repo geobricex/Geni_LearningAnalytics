@@ -1,14 +1,27 @@
 # Etapa 1: Construcción de la aplicación Angular
 FROM node:22-alpine AS build
 
+# Configuración del entorno
+ENV PATH="/app/node_modules/.bin:$PATH"
+
 WORKDIR /app
+
+# Instalar Angular CLI globalmente
+RUN npm install -g @angular/cli --legacy-peer-deps
+RUN chmod +x /usr/local/bin/ng
 
 # Copiar el package.json y el package-lock.json
 COPY package*.json ./
+
+# Instalar dependencias
 RUN npm install --legacy-peer-deps
 
 # Copiar el resto del proyecto al contenedor
 COPY . .
+
+# Verificar Angular CLI y permisos
+RUN ng version
+RUN ls -la /usr/local/bin
 
 # Compilar la aplicación Angular en modo producción
 RUN npm run build --configuration=production
