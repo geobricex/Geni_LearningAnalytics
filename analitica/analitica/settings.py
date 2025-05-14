@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-j#septy!es3p)x@2$yaxkjfv*&zqmxrql4sg-_r)ea95a3s4qq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']  # Asegúrate de permitir cualquier host
 
 
 # Application definition
@@ -42,15 +42,16 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
+# Middleware: Mueve 'corsheaders.middleware.CorsMiddleware' al principio
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'analitica.urls'
@@ -130,3 +131,35 @@ CORS_ALLOW_ALL_ORIGINS = True
 # CORS_ALLOWED_ORIGINS = [
 #     "http://localhost:4200",
 # ]
+
+# Permitir todos los métodos HTTP
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS"
+]
+
+# Permitir encabezados comunes
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
+# Permitir el uso de cookies y credenciales
+CORS_ALLOW_CREDENTIALS = True
+
+# Esta configuración permitirá que cualquier origen haga solicitudes con cualquier método.
+CORS_EXPOSE_HEADERS = ["Content-Type", "X-CSRFToken"]
+
+# Tamaño máximo permitido en una solicitud (50 MB)
+DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800

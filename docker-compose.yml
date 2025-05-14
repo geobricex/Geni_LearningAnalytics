@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  backend:
+    container_name: backend
+    build:
+      context: ./analitica
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - my_network
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./geni
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - my_network
+    environment:
+      - API_URL=http://backend:8000/api
+
+networks:
+  my_network:
+    driver: bridge

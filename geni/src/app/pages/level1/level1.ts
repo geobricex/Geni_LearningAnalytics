@@ -6,7 +6,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import * as XLSX from 'xlsx';
 import { environment } from '../../../environments/environment';
@@ -117,12 +117,20 @@ export class Level1 implements OnInit {
   analyzeLevel1() {
 
     if (this.production) {
-      this.http.post<any[]>(`${this.apiUrl}/level1/`, this.rawData).subscribe({
+      this.http.post<any[]>(`${this.apiUrl}/level1/`, this.rawData, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true'
+        }),
+        withCredentials: true  
+      }).subscribe({
         next: (res) => {
           this.analysisResult = res;
           this.buildExpandedStudentData();
           this.buildDashboardCharts();
-          //console.log(this.analysisResult);
+          console.log('✅ API response:', res);
         },
         error: (err) => {
           console.error('❌ Error calling API:', err);
