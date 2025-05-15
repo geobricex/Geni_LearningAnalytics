@@ -19,7 +19,7 @@ resource "aws_key_pair" "deployer" {
 
 resource "aws_instance" "docker_server" {
   ami                         = "ami-0a887e401f7654935"  # Amazon Linux 2 AMI (HVM), SSD Volume Type
-  instance_type               = "t2.micro"
+  instance_type               = "m5.large"
   key_name                    = aws_key_pair.deployer.key_name
   associate_public_ip_address = true
 
@@ -73,12 +73,15 @@ resource "aws_instance" "docker_server" {
     After=network.target docker.service
     Requires=docker.service
 
+
     [Service]
+    Restart=always
+    RestartSec=5
     WorkingDirectory=/home/ec2-user/Geni_LearningAnalytics
     ExecStart=/usr/bin/docker-compose up --build -d
     ExecStop=/usr/bin/docker-compose down
-    Restart=always
     User=ec2-user
+
 
     [Install]
     WantedBy=multi-user.target" | sudo tee /etc/systemd/system/docker-compose-app.service
